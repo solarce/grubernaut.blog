@@ -23,7 +23,7 @@ them into a neat and ordered set.
 We purchased our Cable Comb from
 [Amazon](http://www.amazon.com/Panduit-CBOT24K-Organizing-Fastener-Inserts/dp/B00429P1OU/ref=sr_1_1?ie=UTF8&qid=1398484241&sr=8-1&keywords=panduit+cable+comb)
 <figure>
-	<img src="/images/cable_comb.jpg" alt="">
+	<img src="/images/wiring/cable_comb.jpg" alt="">
 	<figcaption>Cable Comb from Amazon</figcaption>
 </figure>
 The Cable Comb was fairly easy to use, however with this much CAT6e cable, there was a lot
@@ -33,16 +33,16 @@ own.
 ### Before:
 
 <figure class="third">
-	<img src="/images/wire_hang.jpg" alt="">
-	<img src="/images/wire_floor.jpg" alt="">
-	<img src="/images/wire_floor2.jpg" alt="">
+	<img src="/images/wiring/wire_hang.jpg" alt="">
+	<img src="/images/wiring/wire_floor.jpg" alt="">
+	<img src="/images/wiring/wire_floor2.jpg" alt="">
 </figure>
 
 ### After:
 
 <figure class="half">
-	<img src="/images/wire_bundle.jpg" alt="">
-	<img src="/images/floor_bundle.jpg" alt="">
+	<img src="/images/wiring/wire_bundle.jpg" alt="">
+	<img src="/images/wiring/floor_bundle.jpg" alt="">
 </figure>
 
 After combing through the CAT6e cables in our networking closet, I spent the remainder of
