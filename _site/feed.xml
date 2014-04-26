@@ -2,14 +2,86 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Getting Saucy</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
-<link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2014-04-20T23:22:26-04:00</updated>
-<id>http://localhost:4000/</id>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2014-04-26T00:17:04-04:00</updated>
+<id>/</id>
 <author>
   <name>Jake Champlin</name>
-  <uri>http://localhost:4000/</uri>
+  <uri>/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Wiring Project / Friday Update]]></title>
+ <link rel="alternate" type="text/html" href="/wiring-project-slash-friday-update/" />
+  <id>/wiring-project-slash-friday-update</id>
+  <updated>2014-04-25 16:49:10 -0400T00:00:00-00:00</updated>
+  <published>2014-04-25T00:00:00-04:00</published>
+  
+  <author>
+    <name>Jake Champlin</name>
+    <uri></uri>
+    <email>jake.champlin.27@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;This past week at work I’ve had the fortunate opportunity to start wiring on our new
+Business Continuity Center. The center will end up housing 250+ seats, each with their own
+power and network pulls. &lt;/p&gt;
+
+&lt;p&gt;I was surprised at how heavy all 250+ CAT6e cables were, and especially how taxing they
+were on our cable trays. Running the wire through the cable trays was easy enough, but
+this past week I had the amazing job of combing through our the CAT6e cable and bundling
+them into a neat and ordered set. &lt;/p&gt;
+
+&lt;h2 id=&quot;combing-cable&quot;&gt;Combing Cable&lt;/h2&gt;
+&lt;p&gt;We purchased our Cable Comb from
+&lt;a href=&quot;http://www.amazon.com/Panduit-CBOT24K-Organizing-Fastener-Inserts/dp/B00429P1OU/ref=sr_1_1?ie=UTF8&amp;amp;qid=1398484241&amp;amp;sr=8-1&amp;amp;keywords=panduit+cable+comb&quot;&gt;Amazon&lt;/a&gt;&lt;/p&gt;
+&lt;figure&gt;
+	&lt;img src=&quot;/images/wiring/cable_comb.jpg&quot; alt=&quot;&quot; /&gt;
+	&lt;figcaption&gt;Cable Comb from Amazon&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;The Cable Comb was fairly easy to use, however with this much CAT6e cable, there was a lot
+of hand work to untagle knots and kinks that the comb was unable to sort through on it’s
+own. &lt;/p&gt;
+
+&lt;h3 id=&quot;before&quot;&gt;Before:&lt;/h3&gt;
+
+&lt;figure class=&quot;third&quot;&gt;
+	&lt;img src=&quot;/images/wiring/wire_hang.jpg&quot; alt=&quot;&quot; /&gt;
+	&lt;img src=&quot;/images/wiring/wire_floor.jpg&quot; alt=&quot;&quot; /&gt;
+	&lt;img src=&quot;/images/wiring/wire_floor2.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;after&quot;&gt;After:&lt;/h3&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+	&lt;img src=&quot;/images/wiring/wire_bundle.jpg&quot; alt=&quot;&quot; /&gt;
+	&lt;img src=&quot;/images/wiring/floor_bundle.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;After combing through the CAT6e cables in our networking closet, I spent the remainder of
+the week terminating all of our landings from our wire trays. While it was a nice break
+from development and SysAd work, I’m itching to get back to it as soon as our wiring
+project is completed. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;C’est la vie &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;weekend-plans&quot;&gt;Weekend Plans:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Final Exams in two weeks. &lt;/li&gt;
+  &lt;li&gt;Home Networked IPv6 Firewall &lt;/li&gt;
+  &lt;li&gt;CCNA Studying&lt;/li&gt;
+  &lt;li&gt;GOLang + Emacs discovery&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most of my saturday night will be taken up at &lt;a href=&quot;http://capadultprom.com&quot;&gt;CAP Adult Prom&lt;/a&gt;,
+so I hope I can get some fun time to work on some stuff.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
+</entry>
 
 </feed>
