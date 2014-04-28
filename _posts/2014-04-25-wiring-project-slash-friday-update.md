@@ -3,7 +3,7 @@ layout: post
 title: "Wiring Project / Friday Update"
 description: "Wiring a Business Continuity Center for work"
 modified: 2014-04-25 16:49:10 -0400
-tags: [work,wiring,networking,business continuity]
+tags: [work, wiring, networking, business continuity]
 image:
   feature: bad-wiring.jpg
 comments: true
@@ -27,7 +27,7 @@ We purchased our Cable Comb from
 	<figcaption>Cable Comb from Amazon</figcaption>
 </figure>
 The Cable Comb was fairly easy to use, however with this much CAT6e cable, there was a lot
-of hand work to untagle knots and kinks that the comb was unable to sort through on it's
+of hand work to untangle knots and kinks that the comb was unable to sort through on it's
 own. 
 
 ### Before:
@@ -59,5 +59,5 @@ project is completed.
 * CCNA Studying
 * GOLang + Emacs discovery
 
-Most of my saturday night will be taken up at [CAP Adult Prom](http://capadultprom.com),
+Most of my Saturday night will be taken up at [CAP Adult Prom](http://capadultprom.com),
 so I hope I can get some fun time to work on some stuff.
