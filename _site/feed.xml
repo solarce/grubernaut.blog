@@ -2,27 +2,76 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Getting Saucy</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="" />
-<updated>2014-04-26T00:17:04-04:00</updated>
-<id>/</id>
+<link rel="self" type="application/atom+xml" href="https://jchampy.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="https://jchampy.github.io" />
+<updated>2014-04-29T17:10:40-04:00</updated>
+<id>https://jchampy.github.io/</id>
 <author>
   <name>Jake Champlin</name>
-  <uri>/</uri>
+  <uri>https://jchampy.github.io/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[Weekend at Prom]]></title>
+ <link rel="alternate" type="text/html" href="https://jchampy.github.io/weekend-at-prom/" />
+  <id>https://jchampy.github.io/weekend-at-prom</id>
+  <updated>2014-04-29 20:55:20 UTCT00:00:00-00:00</updated>
+  <published>2014-04-29T00:00:00-04:00</published>
+  
+  <author>
+    <name>Jake Champlin</name>
+    <uri>https://jchampy.github.io</uri>
+    <email>jake.champlin.27@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;prom&quot;&gt;Prom&lt;/h2&gt;
+&lt;p&gt;This past weekend the girlfriend and I went to the &lt;a href=&quot;http://www.capadultprom.com&quot;&gt;Columbus Adult Prom&lt;/a&gt; in order to help raise funds for preventing child abuse. 
+While, I am far from being a social butterfly, it was a fun “Night on the town” and we were able to get all dressed up for the event. &lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/images/prom/prom1.jpg&quot; alt=&quot;&quot; /&gt;
+	&lt;figcaption&gt;Heading out to Prom&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/images/prom/prom2.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/images/prom/prom3.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;motorcycle&quot;&gt;Motorcycle&lt;/h2&gt;
+
+&lt;p&gt;I was even able to talk her into a short ride on the bike this weekend. I’ll probably have full tag and more posts to come, fully devoted to the bike later on. &lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/images/prom/bike.jpg&quot; alt=&quot;&quot; /&gt;
+	&lt;figcaption&gt;2003 VTX1800R&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;wrapup&quot;&gt;Wrapup&lt;/h3&gt;
+&lt;p&gt;Overall, it was a fun weekend. Didn’t get a whole lot of things done that I wanted to, but that’s life. I have a plan written out for implementing a firewall at home for IPv6, and was able to start studying a little for my CCNA exam in July. Didn’t do any GO discovery or Emacs discovery, but found SublimeText2 and will probably stick with that for the future. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hobbes: So the secret to good self-esteem is to lower your expectations to the point where they’re already met?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Wiring Project / Friday Update]]></title>
- <link rel="alternate" type="text/html" href="/wiring-project-slash-friday-update/" />
-  <id>/wiring-project-slash-friday-update</id>
-  <updated>2014-04-25 16:49:10 -0400T00:00:00-00:00</updated>
+ <link rel="alternate" type="text/html" href="https://jchampy.github.io/wiring-project-slash-friday-update/" />
+  <id>https://jchampy.github.io/wiring-project-slash-friday-update</id>
+  <updated>2014-04-25 20:49:10 UTCT00:00:00-00:00</updated>
   <published>2014-04-25T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>https://jchampy.github.io</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This past week at work I’ve had the fortunate opportunity to start wiring on our new
@@ -42,7 +91,7 @@ them into a neat and ordered set. &lt;/p&gt;
 	&lt;figcaption&gt;Cable Comb from Amazon&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;The Cable Comb was fairly easy to use, however with this much CAT6e cable, there was a lot
-of hand work to untagle knots and kinks that the comb was unable to sort through on it’s
+of hand work to untangle knots and kinks that the comb was unable to sort through on it’s
 own. &lt;/p&gt;
 
 &lt;h3 id=&quot;before&quot;&gt;Before:&lt;/h3&gt;
@@ -78,10 +127,10 @@ project is completed. &lt;/p&gt;
   &lt;li&gt;GOLang + Emacs discovery&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Most of my saturday night will be taken up at &lt;a href=&quot;http://capadultprom.com&quot;&gt;CAP Adult Prom&lt;/a&gt;,
+&lt;p&gt;Most of my Saturday night will be taken up at &lt;a href=&quot;http://capadultprom.com&quot;&gt;CAP Adult Prom&lt;/a&gt;,
 so I hope I can get some fun time to work on some stuff.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
