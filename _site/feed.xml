@@ -2,27 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Getting Saucy</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="https://jchampy.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="https://jchampy.github.io" />
-<updated>2014-04-29T17:10:40-04:00</updated>
-<id>https://jchampy.github.io/</id>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2014-04-29T23:42:27-04:00</updated>
+<id>/</id>
 <author>
   <name>Jake Champlin</name>
-  <uri>https://jchampy.github.io/</uri>
+  <uri>/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Weekend at Prom]]></title>
- <link rel="alternate" type="text/html" href="https://jchampy.github.io/weekend-at-prom/" />
-  <id>https://jchampy.github.io/weekend-at-prom</id>
+ <link rel="alternate" type="text/html" href="/weekend-at-prom/" />
+  <id>/weekend-at-prom</id>
   <updated>2014-04-29 20:55:20 UTCT00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://jchampy.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;prom&quot;&gt;Prom&lt;/h2&gt;
@@ -58,20 +58,112 @@ While, I am far from being a social butterfly, it was a fun “Night on the town
   &lt;p&gt;Hobbes: So the secret to good self-esteem is to lower your expectations to the point where they’re already met?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Syncing Sublime Text with Dropbox]]></title>
+ <link rel="alternate" type="text/html" href="/syncing-sublime-text-settings-with-dropbox/" />
+  <id>/syncing-sublime-text-settings-with-dropbox</id>
+  <updated>2014-04-30 02:49:50 UTCT00:00:00-00:00</updated>
+  <published>2014-04-29T00:00:00-04:00</published>
+  
+  <author>
+    <name>Jake Champlin</name>
+    <uri></uri>
+    <email>jake.champlin.27@gmail.com</email>
+  </author>
+  <content type="html">&lt;figure&gt;
+	&lt;img src=&quot;/images/sublime/sublime1.png&quot; /&gt;
+	&lt;figcaption&gt;Current Sublime Text 2 Setup&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;syncing-user-packages-for-sublime-text-2&quot;&gt;Syncing User Packages for Sublime Text 2&lt;/h3&gt;
+&lt;p&gt;Recently (read as: “This Week”) I’ve nearly fallen in love with &lt;a href=&quot;http://www.sublimetext.com&quot;&gt;Sublime Text&lt;/a&gt; and you should seriously try it out if you haven’t already. You can use Sublime Text and evaluate it for free, yet a license must be purchased for continued use. I’ve used it for the past week now, and started the process of configuring my development bed around Sublime Text. 
+I’ll cover my Sublime Text configuration later on in the post. &lt;/p&gt;
+
+&lt;p&gt;One of the first issues I ran into with Sublime Text was maintaining a concurrent setup across my iMac at work and my MBP at home. As a native Vim lover, I was used to creating a symbolic link to a Dropbox file of my .vimrc and .vim directories. And in fact, it is quite the same process for Sublime Text. &lt;/p&gt;
+
+&lt;h2 id=&quot;osx&quot;&gt;OSX&lt;/h2&gt;
+&lt;p&gt;In OSX, first find which machine you wish to copy the settings from. 
+&lt;em&gt;hint:&lt;/em&gt; it’s the Sublime Text 2 that you have already fully configured to your liking at the time. &lt;/p&gt;
+
+&lt;p&gt;On that machine make sure that Sublime Text 2 is fully closed, then create a Dropbox folder to hold your User Packages folder. Then create a symbolic link between the two. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Library/Application&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Support/Sublime&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Text&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;2/Packages/
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; mkdir ~/Dropbox/Sublime
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; mv User ~/Dropbox/Sublime/
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; ln -s ~/Dropbox/Sublime/User
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; If your Dropbox folder is mounted in a different directory than &lt;code&gt;~/Dropbox&lt;/code&gt; then replace the directory path specified above with the path to your local Dropbox directory. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sublime Text 3:&lt;/strong&gt; Simply replace the &lt;code&gt;Sublime\ Text\ 2/&lt;/code&gt; directory with: &lt;code&gt;Sublime\ Text\ 3/&lt;/code&gt; directory path. &lt;/p&gt;
+
+&lt;p&gt;Then on every subsequent machine that you wish to sync your Sublime Text settings with, remove your User Packages directory and create a symbolic link to your Dropbox User directory. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Library/Application&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Support/Sublime&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Text&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;2/Packages/
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; rm -r User
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; ln -s ~/Dropbox/Sublime/User
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When you start up Sublime Text again on the subsequent machines, Sublime Text will start to download and install all the packages from your User Packages directory. As well as implement all of your settings specified in your User Settings. 
+&lt;em&gt;Note:&lt;/em&gt; If you are working with a fresh install of Sublime Text, you will have to install &lt;a href=&quot;https://sublime.wbond.net/installation#st2&quot;&gt;Package Control&lt;/a&gt; before any packages can be synced. &lt;/p&gt;
+
+&lt;h3 id=&quot;my-sublime-text-configuration&quot;&gt;My Sublime Text Configuration&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;As of 4/29/14. WIP&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;My Currently Used Packages:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/kemayo/sublime-text-git/wiki&quot;&gt;Git&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/revolunet/sublimetext-markdown-preview&quot;&gt;Markdown Preview&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wbond.net/sublime_packages/sftp&quot;&gt;SFTP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/afterdesign/MacTerminal&quot;&gt;MacTerminal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jisaacks/GitGutter&quot;&gt;GitGutter&lt;/a&gt; - Extremely Nice, Highly recommended. &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/netpro2k/SublimeBlockCursor&quot;&gt;Sublime Block Cursor&lt;/a&gt; - Because with vintage mode it’s near impossible to see the cursor in default. &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/buymeasoda/soda-theme/&quot;&gt;Theme - Soda&lt;/a&gt; - Really makes Sublime more &lt;em&gt;Mac&lt;/em&gt; like. Beautiful. &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sublime.wbond.net/installation&quot;&gt;Package Control&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;My Current User Settings: &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;json&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;bold_folder_labels&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;color_scheme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Packages/Color Scheme - Default/Monokai.tmTheme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;fade_fold_buttons&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;highlight_line&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;ignored_packages&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; 	&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; 	&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;line_padding_bottom&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;line_padding_top&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;theme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Soda Dark.sublime-theme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;quot;vintage_start_in_command_mode&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Yes, of course I use vintage mode, and start in command mode. Some habits never change.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Life is like topography, Hobbes. There are summits of happiness and success, flat stretches of boring routine and valleys of frustration and failure.  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Wiring Project / Friday Update]]></title>
- <link rel="alternate" type="text/html" href="https://jchampy.github.io/wiring-project-slash-friday-update/" />
-  <id>https://jchampy.github.io/wiring-project-slash-friday-update</id>
+ <link rel="alternate" type="text/html" href="/wiring-project-slash-friday-update/" />
+  <id>/wiring-project-slash-friday-update</id>
   <updated>2014-04-25 20:49:10 UTCT00:00:00-00:00</updated>
   <published>2014-04-25T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://jchampy.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This past week at work I’ve had the fortunate opportunity to start wiring on our new
@@ -130,7 +222,7 @@ project is completed. &lt;/p&gt;
 &lt;p&gt;Most of my Saturday night will be taken up at &lt;a href=&quot;http://capadultprom.com&quot;&gt;CAP Adult Prom&lt;/a&gt;,
 so I hope I can get some fun time to work on some stuff.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
