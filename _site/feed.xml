@@ -2,27 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Getting Saucy</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="https://jchampy.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="https://jchampy.github.io" />
-<updated>2014-04-29T23:48:33-04:00</updated>
-<id>https://jchampy.github.io/</id>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2014-05-05T14:07:37-04:00</updated>
+<id>/</id>
 <author>
   <name>Jake Champlin</name>
-  <uri>https://jchampy.github.io/</uri>
+  <uri>/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Weekend at Prom]]></title>
- <link rel="alternate" type="text/html" href="https://jchampy.github.io/weekend-at-prom/" />
-  <id>https://jchampy.github.io/weekend-at-prom</id>
-  <updated>2014-04-29 20:55:20 UTCT00:00:00-00:00</updated>
+ <link rel="alternate" type="text/html" href="/weekend-at-prom/" />
+  <id>/weekend-at-prom</id>
+  <updated>2014-04-29 16:55:20 -0400T00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://jchampy.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;prom&quot;&gt;Prom&lt;/h2&gt;
@@ -58,20 +58,20 @@ While, I am far from being a social butterfly, it was a fun “Night on the town
   &lt;p&gt;Hobbes: So the secret to good self-esteem is to lower your expectations to the point where they’re already met?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Syncing Sublime Text with Dropbox]]></title>
- <link rel="alternate" type="text/html" href="https://jchampy.github.io/syncing-sublime-text-settings-with-dropbox/" />
-  <id>https://jchampy.github.io/syncing-sublime-text-settings-with-dropbox</id>
-  <updated>2014-04-30 02:49:50 UTCT00:00:00-00:00</updated>
+ <link rel="alternate" type="text/html" href="/syncing-sublime-text-settings-with-dropbox/" />
+  <id>/syncing-sublime-text-settings-with-dropbox</id>
+  <updated>2014-04-29 22:49:50 -0400T00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://jchampy.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -150,20 +150,20 @@ I’ll cover my Sublime Text configuration later on in the post. &lt;/p&gt;
   &lt;p&gt;Life is like topography, Hobbes. There are summits of happiness and success, flat stretches of boring routine and valleys of frustration and failure.  &lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Wiring Project / Friday Update]]></title>
- <link rel="alternate" type="text/html" href="https://jchampy.github.io/wiring-project-slash-friday-update/" />
-  <id>https://jchampy.github.io/wiring-project-slash-friday-update</id>
-  <updated>2014-04-25 20:49:10 UTCT00:00:00-00:00</updated>
+ <link rel="alternate" type="text/html" href="/wiring-project-slash-friday-update/" />
+  <id>/wiring-project-slash-friday-update</id>
+  <updated>2014-04-25 16:49:10 -0400T00:00:00-00:00</updated>
   <published>2014-04-25T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://jchampy.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This past week at work I’ve had the fortunate opportunity to start wiring on our new
@@ -222,7 +222,7 @@ project is completed. &lt;/p&gt;
 &lt;p&gt;Most of my Saturday night will be taken up at &lt;a href=&quot;http://capadultprom.com&quot;&gt;CAP Adult Prom&lt;/a&gt;,
 so I hope I can get some fun time to work on some stuff.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
