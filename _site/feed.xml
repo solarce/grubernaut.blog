@@ -2,27 +2,97 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Getting Saucy</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="" />
-<updated>2014-05-05T14:07:37-04:00</updated>
-<id>/</id>
+<link rel="self" type="application/atom+xml" href="https://jchampy.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="https://jchampy.github.io" />
+<updated>2014-05-21T23:25:41-04:00</updated>
+<id>https://jchampy.github.io/</id>
 <author>
   <name>Jake Champlin</name>
-  <uri>/</uri>
+  <uri>https://jchampy.github.io/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[Soylet Day 1]]></title>
+ <link rel="alternate" type="text/html" href="https://jchampy.github.io/soylet-day-1/" />
+  <id>https://jchampy.github.io/soylet-day-1</id>
+  <updated>2014-05-22 02:49:40 UTCT00:00:00-00:00</updated>
+  <published>2014-05-21T00:00:00-04:00</published>
+  
+  <author>
+    <name>Jake Champlin</name>
+    <uri>https://jchampy.github.io</uri>
+    <email>jake.champlin.27@gmail.com</email>
+  </author>
+  <content type="html">&lt;figure&gt;
+	&lt;img src=&quot;/images/soylent/soylent_view.jpeg&quot; /&gt;
+	&lt;figcaption&gt;DIY Soylent&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;what-is-soylent&quot;&gt;What is Soylent?&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://soylent.me&quot;&gt;Soylent&lt;/a&gt; is some sort of wicked Brave New World-esque food created by Robert Rhinehart and his team after recognizing the disproportionate amount of time and money they spent creating nutritionally complete meals.&lt;/p&gt;
+
+&lt;p&gt;Soylent is a food product (classified as a food, not a supplement, by the FDA) designed for use as a staple meal by all adults. Each serving of Soylent provides maximum nutrition with minimum effort.&lt;/p&gt;
+
+&lt;h2 id=&quot;so-why-would-i-drink-it&quot;&gt;So Why Would I Drink It?&lt;/h2&gt;
+&lt;p&gt;The main benefit that I saw when researching Soylent was the cost. I would be able to have a whole days worth of food for $3.50 per day. Not only would it be insanely cheap and sustainable, I would be achieving my exact nutritional requirements. &lt;/p&gt;
+
+&lt;h2 id=&quot;cost-ingredients&quot;&gt;Cost? Ingredients?&lt;/h2&gt;
+&lt;p&gt;I used Soylent’s &lt;a href=&quot;http://diy.soylent.me&quot;&gt;DIY Tool&lt;/a&gt; to select the community favorite recipe called &lt;a href=&quot;http://diy.soylent.me/recipes/people-chow-301-tortilla-perfection&quot;&gt;People’s Chow&lt;/a&gt;. With only 8 ingredients (plus water) this seemed like a low-overhead and low-risk entry point into my Soylent experiment. I spent $223 for ~2-3 months worth of food, leaving me with an approximate cost of $3.50/day. The only thing I replaced from the &lt;a href=&quot;http://diy.soylent.me/recipes/people-chow-301-tortilla-perfection&quot;&gt;People’s Chow Recipe&lt;/a&gt; was to substitute Olive Oil for the Soybean Oil. &lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/images/soylent/nutrition.png&quot; /&gt;
+	&lt;figcaption&gt;People&#39;s Chow Nutrition Information&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/images/soylent/soylent_ingredients.jpeg&quot; /&gt;
+	&lt;figcaption&gt;All ingredients of Soylent before being mixed&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;mixing-process&quot;&gt;Mixing Process&lt;/h2&gt;
+&lt;p&gt;The first time I made the DIY Soylent, I completely messed it up. My blender is too small to blend the whole day’s weight of Soylent powder, thus leaving me with an insanely grainy, disgusting, porridge. 
+The second time I made the DIY Soylent, I split the weight of the dry ingredients in half, blending half of a days “food” at a time. The steps I found that work best are as follows: &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Measure Dry Ingredients&lt;/li&gt;
+  &lt;li&gt;Shake Dry Ingredients and add to blender&lt;/li&gt;
+  &lt;li&gt;Measure out oil and add to blender&lt;/li&gt;
+  &lt;li&gt;Add water to blender &lt;/li&gt;
+  &lt;li&gt;Blend on high for 4+ minutes, then blend on slow for 6+ minutes &lt;/li&gt;
+  &lt;li&gt;Repeat 1-5 for other half of days “food”&lt;/li&gt;
+  &lt;li&gt;Refrigerate Soylent overnight &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Using this process I was able to get the best taste out of the DIY Soylent as well as the best consistency of the liquid. &lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/images/soylent/soylent_blend.jpeg&quot; /&gt;
+	&lt;figcaption&gt;Blending up a fresh batch of Soylent&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;but-does-it-taste-good&quot;&gt;But does it taste good?&lt;/h2&gt;
+&lt;p&gt;The first batch of DIY Soylent I made tasted purely horrible. After I split the batch in half and blended it in segments the texture of the Soylent was nearly water. I added 2 Tbsp of Ground Cinnamon along with 3Tbsp of Splenda to each days “food” as well, which seemed to help take away from the bland taste of the Masa. &lt;/p&gt;
+
+&lt;h2 id=&quot;first-days-report&quot;&gt;First Day’s Report&lt;/h2&gt;
+&lt;p&gt;So far it was fairly easy until right before bedtime to go all day without food. The Soylent is actually fairly filling. After drinking half of a “meal”, I actually felt full and satisfied as if I had just eaten a large meal. 
+After fixing the taste of the Soylent, I can honestly see this being a viable solution to save money on nutritious food costs. &lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/soylet-day-1/&quot;&gt;Soylet Day 1&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on May 21, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Weekend at Prom]]></title>
- <link rel="alternate" type="text/html" href="/weekend-at-prom/" />
-  <id>/weekend-at-prom</id>
-  <updated>2014-04-29 16:55:20 -0400T00:00:00-00:00</updated>
+ <link rel="alternate" type="text/html" href="https://jchampy.github.io/weekend-at-prom/" />
+  <id>https://jchampy.github.io/weekend-at-prom</id>
+  <updated>2014-04-29 20:55:20 UTCT00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>https://jchampy.github.io</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;prom&quot;&gt;Prom&lt;/h2&gt;
@@ -58,20 +128,20 @@ While, I am far from being a social butterfly, it was a fun “Night on the town
   &lt;p&gt;Hobbes: So the secret to good self-esteem is to lower your expectations to the point where they’re already met?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Syncing Sublime Text with Dropbox]]></title>
- <link rel="alternate" type="text/html" href="/syncing-sublime-text-settings-with-dropbox/" />
-  <id>/syncing-sublime-text-settings-with-dropbox</id>
-  <updated>2014-04-29 22:49:50 -0400T00:00:00-00:00</updated>
+ <link rel="alternate" type="text/html" href="https://jchampy.github.io/syncing-sublime-text-settings-with-dropbox/" />
+  <id>https://jchampy.github.io/syncing-sublime-text-settings-with-dropbox</id>
+  <updated>2014-04-30 02:49:50 UTCT00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>https://jchampy.github.io</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -150,20 +220,20 @@ I’ll cover my Sublime Text configuration later on in the post. &lt;/p&gt;
   &lt;p&gt;Life is like topography, Hobbes. There are summits of happiness and success, flat stretches of boring routine and valleys of frustration and failure.  &lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Wiring Project / Friday Update]]></title>
- <link rel="alternate" type="text/html" href="/wiring-project-slash-friday-update/" />
-  <id>/wiring-project-slash-friday-update</id>
-  <updated>2014-04-25 16:49:10 -0400T00:00:00-00:00</updated>
+ <link rel="alternate" type="text/html" href="https://jchampy.github.io/wiring-project-slash-friday-update/" />
+  <id>https://jchampy.github.io/wiring-project-slash-friday-update</id>
+  <updated>2014-04-25 20:49:10 UTCT00:00:00-00:00</updated>
   <published>2014-04-25T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>https://jchampy.github.io</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This past week at work I’ve had the fortunate opportunity to start wiring on our new
@@ -222,7 +292,7 @@ project is completed. &lt;/p&gt;
 &lt;p&gt;Most of my Saturday night will be taken up at &lt;a href=&quot;http://capadultprom.com&quot;&gt;CAP Adult Prom&lt;/a&gt;,
 so I hope I can get some fun time to work on some stuff.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://jchampy.github.io/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://jchampy.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
