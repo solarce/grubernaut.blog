@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Soylet Day 1"
+title: "Soylent Day 1"
 modified: 2014-05-21 22:49:40 -0400
 tags: [soylent, body hack, cheap living, diet, bodybuilding]
 image: abstract-5.jpg
