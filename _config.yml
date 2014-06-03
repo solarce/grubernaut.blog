@@ -2,19 +2,19 @@ title:            Getting Saucy
 description:      Just some ramblings of yet another insomniatic developer
 disqus_shortname: jchamplin-landing
 #Your site's domain goes here. Leave localhost server or blank when working locally.
-url:              https://jchampy.github.io
+url:              https://grubernaut.github.io
 #url:              
 
 # Owner/author information
 owner:
   name:           Jake Champlin
   avatar:         avatar.jpg
-  bio:            "I'm just another insomniac working as a developer, devops, SysAd, hacker, and a student."
+  bio:            "I'm just another insomniac working as a developer, operator, SysAd, hacker, and a student."
   email:          jake.champlin.27@gmail.com
   # Social networking links used in footer. Update and remove as you like.
   twitter:       "grubernaut"
   facebook:      "jake.champlin.27" 
-  github:        "jchampy" 
+  github:        "grubernaut" 
   stackexchange:  
   linkedin:       
   instagram:      
