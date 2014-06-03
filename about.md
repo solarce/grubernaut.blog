@@ -18,11 +18,13 @@ in disbelief that I can make a living by doing what I had wanted to do when I wa
 
 ## Things I enjoy:
 
+* Operations Support (SysAd)
+* Automation Development and Implementation
+* Continuous Integration Tools
+* Configuration Management
+* Learning new languages and new development strategies.
 * C / C++ 
 * Ruby 
-* Learning new languages, new development strategies. Currently working through Go
-* Automation Development and Implementation
-* Operations Support (SysAd)
 * Vim (Have been nudged to go emacs)
 * Apple Products
 * Systems Development (Linux primarily)
@@ -30,4 +32,4 @@ in disbelief that I can make a living by doing what I had wanted to do when I wa
 * Riding Motorcycles
 * Music. Always playing. 
 
-<div markdown="0"><a href="https://github.com/jchampy" class="btn btn-info">Fork me on GitHub!</a></div>
+<div markdown="0"><a href="https://github.com/grubernaut" class="btn btn-info">Fork me on GitHub!</a></div>
