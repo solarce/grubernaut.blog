@@ -2,27 +2,130 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Getting Saucy</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="https://grubernaut.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="https://grubernaut.github.io" />
-<updated>2014-06-03T18:06:11-04:00</updated>
-<id>https://grubernaut.github.io/</id>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2014-06-21T16:40:36-04:00</updated>
+<id>/</id>
 <author>
   <name>Jake Champlin</name>
-  <uri>https://grubernaut.github.io/</uri>
+  <uri>/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[Setting up a Continuous Delivery Blog]]></title>
+ <link rel="alternate" type="text/html" href="/vps-migration/" />
+  <id>/vps-migration</id>
+  <updated>2014-06-21 18:29:10 UTCT00:00:00-00:00</updated>
+  <published>2014-06-21T00:00:00-04:00</published>
+  
+  <author>
+    <name>Jake Champlin</name>
+    <uri></uri>
+    <email>jake.champlin.27@gmail.com</email>
+  </author>
+  <content type="html">&lt;figure&gt;
+  &lt;img src=&quot;/images/vps/digitalocean.jpeg&quot; /&gt;
+  &lt;figcaption&gt;Digital Ocean - https://twitter.com/bryanl/status/479606602186895360&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+&lt;p&gt;Growing up I never really had the capital to invest in a home setup, nor were my parents ever going to let me near the networking equipment after capturing packets of web traffic from my parents. Getting my own house for the first time last year and purchasing my own networking equipment opened up a lot of doors for me. I was now able to finally publish something on the public internet that I owned. The only problem with this arose with the financial costs of running bare metal servers at home, and the overhead cost I would need to begin such a project. &lt;/p&gt;
+
+&lt;p&gt;I was talking to Brandon Burton (&lt;a href=&quot;https://twitter.com/solarce&quot;&gt;@solarce&lt;/a&gt;) recently and he told me stories of his first stack that he hosted himself. Remembering that I still hadn’t achieved that goal yet, I set out to remedy this problem as quickly as I could. &lt;/p&gt;
+
+&lt;p&gt;Owning bare metal servers would still be a costly venture for me today. I would have to pay for the power consumption, the networking equipment to ensure security, and the increased bandwidth of my internet connection. Thus, configuring a VPS would be my best option. &lt;/p&gt;
+
+&lt;p&gt;I chose Digital Ocean purely out of simplicity. I could have gone the Amazon AWS route, and still may in the future, but I wanted to start this project ASAP, and was itching to get tinkering with setup. This is my bare and basic write-up of how I migrated my Jekyll blog from a GitHub Pages site to a cloud hosted blog with Digital Ocean. &lt;/p&gt;
+
+&lt;h2 id=&quot;migrating-my-personal-blog-to-a-digital-ocean-droplet&quot;&gt;Migrating my personal blog to a Digital Ocean Droplet&lt;/h2&gt;
+&lt;p&gt;First things first, I needed to actually create a &lt;a href=&quot;https://www.digitalocean.com&quot;&gt;Digital Ocean&lt;/a&gt; Droplet. Creating a droplet on &lt;a href=&quot;https://www.digitalocean.com&quot;&gt;Digital Ocean&lt;/a&gt; was actually the easiest part of this whole process. I was entirely pleased with the whole setup of my account, the ease of integrating 2-Factor Authentication, and setting up billing via PayPal for my droplet. &lt;/p&gt;
+
+&lt;h3 id=&quot;setting-up-a-digital-ocean-droplet&quot;&gt;Setting up a Digital Ocean Droplet&lt;/h3&gt;
+&lt;p&gt;Once I had a few coins in my Digital Ocean account and my SSH-keys added to my Digital Ocean account, starting a new Digital Ocean droplet couldn’t have been easier. I selected the type of VPS that I wanted, the image I wanted on it, the SSH-Keys I needed, and I was good to go. In 60 seconds I had a working droplet with Ubuntu-14.04 and root access. I was in! &lt;/p&gt;
+
+&lt;h3 id=&quot;buying-a-domain-name&quot;&gt;Buying a Domain Name&lt;/h3&gt;
+&lt;p&gt;To be honest, I didn’t particularly shop around for the cheapest domain name available, and went with the simpler option of GoDaddy.com. All jokes aside, it was a fairly simple and easy process that allowed me to pay via PayPal for my domain name. $13 bucks and I had grubernaut.com as a domain name. &lt;/p&gt;
+
+&lt;h3 id=&quot;routing-dns-from-godaddy-to-digital-ocean&quot;&gt;Routing DNS from GoDaddy to Digital Ocean&lt;/h3&gt;
+&lt;p&gt;This…. took me a while. I had to remember that GoDaddy.com was the DNR for the domain, and would need different nameservers specified to point to Digital Ocean. After removing all of the A Records, CNAME Records, and MX Records that GoDaddy.com initializes with, I was left with a bare Zone Record on GoDaddy.com. Aside from the three nameservers provided from Digital Ocean. &lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&quot;/images/vps/nameservers.png&quot; /&gt;
+  &lt;figcaption&gt;Nameservers from Digital Ocean&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;After adding the correct nameservers to GoDaddy.com, I then had to edit my Digital Ocean’s Zone File as well. I needed an A Record that pointed all traffic to my blog, as well as specific trafic for my blog to route correctly. &lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&quot;/images/vps/do-dns1.jpg&quot; /&gt;
+  &lt;figcaption&gt;DNS on Digital Ocean&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Having that all setup, I was now able to ping grubernaut.com, www.grubernaut.com, and blog.grubernaut.com and have them all resolve to my blog droplet’s IP address. &lt;/p&gt;
+
+&lt;h3 id=&quot;setting-up-continuous-delivery&quot;&gt;Setting up Continuous Delivery&lt;/h3&gt;
+&lt;p&gt;Setting up continuous delivery inside of my droplet was fairly easy since I was using Git as a versioning tool. 
+First, I logged into my droplet and created a remote git server. 
+Then, I initialized a bare repository, and created a new post-receive hook. (This would be where the continuous delivery comes in!). &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; mkdir grubernaut.blog.git
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;grubernaut.blog.git
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; git --bare init
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; touch hooks/post-receive
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I opened up the &lt;strong&gt;only&lt;/strong&gt; editor there is (ViM) and wrote my post-receive hook. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;GIT_REPO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/grubernaut.blog.git
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TMP_GIT_CLONE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/tmp/grubernaut.blog
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PUBLIC_WWW&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/www/grubernaut.blog
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; git clone &lt;span class=&quot;nv&quot;&gt;$GIT_REPO&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TMP_GIT_CLONE&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; jekyll build -s &lt;span class=&quot;nv&quot;&gt;$TMP_GIT_CLONE&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$PUBLIC_WWW&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; rm -Rf &lt;span class=&quot;nv&quot;&gt;$TMP_GIT_CLONE&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This hook would clone my repository into a temporary directory, build my site with jekyll, and place the built site into a public directory. And this hook would run after every commit that was received. &lt;/p&gt;
+
+&lt;p&gt;The only thing left to do on my droplet was to configure Apache2 to point to &lt;code&gt;/var/www/grubernaut.blog/&lt;/code&gt; and I was all set!&lt;/p&gt;
+
+&lt;h3 id=&quot;configuring-workstation-repo&quot;&gt;Configuring Workstation Repo&lt;/h3&gt;
+&lt;p&gt;On my development workstation, I had to do some slight configuration to be able to push to my droplet and have it be automagically deployed. Luckily this is just a simple one-line git command. 
+&lt;code&gt;bash
+git remote add deploy &amp;lt;user&amp;gt;@&amp;lt;site&amp;gt;:~/&amp;lt;path-to-repo&amp;gt;.git
+&lt;/code&gt;
+From there I can now run a &lt;code&gt;git push deploy master&lt;/code&gt; and git will take care of the deployment chain for me. &lt;/p&gt;
+
+&lt;h3 id=&quot;final-thoughts-and-future-plans&quot;&gt;Final Thoughts and Future Plans&lt;/h3&gt;
+&lt;p&gt;Overall, this was a tremendous learning experience for me, and a great introduction to VPS’s. My goal now is to spin up more Droplets on Digital Ocean and start building a full stack of Droplets. 
+Things like: &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A VPN Server&lt;/li&gt;
+  &lt;li&gt;A ZNC IRC Bouncer (Something I’ve wanted for a while)&lt;/li&gt;
+  &lt;li&gt;A Sensu Server to monitor my stack&lt;/li&gt;
+  &lt;li&gt;etc…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Eventually I would love to have this whole setup served from Chef cookbooks, and fully automated. This was a great introduction to how the infrastructure in Cloud-Land works though. &lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/vps-migration/&quot;&gt;Setting up a Continuous Delivery Blog&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on June 21, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[The effects of a DevOps community]]></title>
- <link rel="alternate" type="text/html" href="https://grubernaut.github.io/the-effects-of-a-devops-community/" />
-  <id>https://grubernaut.github.io/the-effects-of-a-devops-community</id>
+ <link rel="alternate" type="text/html" href="/the-effects-of-a-devops-community/" />
+  <id>/the-effects-of-a-devops-community</id>
   <updated>2014-06-03 01:22:47 UTCT00:00:00-00:00</updated>
   <published>2014-06-02T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://grubernaut.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -68,20 +171,20 @@ This was the first time in my life that I had ever been fully accepted into an a
   &lt;p&gt;Calvin: “Sometimes when I’m talking, my words can’t keep up with my thoughts. I wonder why we think faster than we speak. Probably so we can think twice.” &lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://grubernaut.github.io/the-effects-of-a-devops-community/&quot;&gt;The effects of a DevOps community&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://grubernaut.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on June 02, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/the-effects-of-a-devops-community/&quot;&gt;The effects of a DevOps community&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on June 02, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Soylent Day 1]]></title>
- <link rel="alternate" type="text/html" href="https://grubernaut.github.io/soylent-day-1/" />
-  <id>https://grubernaut.github.io/soylent-day-1</id>
+ <link rel="alternate" type="text/html" href="/soylent-day-1/" />
+  <id>/soylent-day-1</id>
   <updated>2014-05-22 02:49:40 UTCT00:00:00-00:00</updated>
   <published>2014-05-21T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://grubernaut.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -138,20 +241,20 @@ The second time I made the DIY Soylent, I split the weight of the dry ingredient
 &lt;p&gt;So far it was fairly easy until right before bedtime to go all day without food. The Soylent is actually fairly filling. After drinking half of a “meal”, I actually felt full and satisfied as if I had just eaten a large meal. 
 After fixing the taste of the Soylent, I can honestly see this being a viable solution to save money on nutritious food costs. &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://grubernaut.github.io/soylent-day-1/&quot;&gt;Soylent Day 1&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://grubernaut.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on May 21, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/soylent-day-1/&quot;&gt;Soylent Day 1&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on May 21, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Weekend at Prom]]></title>
- <link rel="alternate" type="text/html" href="https://grubernaut.github.io/weekend-at-prom/" />
-  <id>https://grubernaut.github.io/weekend-at-prom</id>
+ <link rel="alternate" type="text/html" href="/weekend-at-prom/" />
+  <id>/weekend-at-prom</id>
   <updated>2014-04-29 20:55:20 UTCT00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://grubernaut.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;prom&quot;&gt;Prom&lt;/h2&gt;
@@ -187,20 +290,20 @@ While, I am far from being a social butterfly, it was a fun “Night on the town
   &lt;p&gt;Hobbes: So the secret to good self-esteem is to lower your expectations to the point where they’re already met?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://grubernaut.github.io/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://grubernaut.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Syncing Sublime Text with Dropbox]]></title>
- <link rel="alternate" type="text/html" href="https://grubernaut.github.io/syncing-sublime-text-settings-with-dropbox/" />
-  <id>https://grubernaut.github.io/syncing-sublime-text-settings-with-dropbox</id>
+ <link rel="alternate" type="text/html" href="/syncing-sublime-text-settings-with-dropbox/" />
+  <id>/syncing-sublime-text-settings-with-dropbox</id>
   <updated>2014-04-30 02:49:50 UTCT00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://grubernaut.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -279,20 +382,20 @@ I’ll cover my Sublime Text configuration later on in the post. &lt;/p&gt;
   &lt;p&gt;Life is like topography, Hobbes. There are summits of happiness and success, flat stretches of boring routine and valleys of frustration and failure.  &lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://grubernaut.github.io/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://grubernaut.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Wiring Project / Friday Update]]></title>
- <link rel="alternate" type="text/html" href="https://grubernaut.github.io/wiring-project-slash-friday-update/" />
-  <id>https://grubernaut.github.io/wiring-project-slash-friday-update</id>
+ <link rel="alternate" type="text/html" href="/wiring-project-slash-friday-update/" />
+  <id>/wiring-project-slash-friday-update</id>
   <updated>2014-04-25 20:49:10 UTCT00:00:00-00:00</updated>
   <published>2014-04-25T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri>https://grubernaut.github.io</uri>
+    <uri></uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This past week at work I’ve had the fortunate opportunity to start wiring on our new
@@ -351,7 +454,7 @@ project is completed. &lt;/p&gt;
 &lt;p&gt;Most of my Saturday night will be taken up at &lt;a href=&quot;http://capadultprom.com&quot;&gt;CAP Adult Prom&lt;/a&gt;,
 so I hope I can get some fun time to work on some stuff.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://grubernaut.github.io/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;https://grubernaut.github.io&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
