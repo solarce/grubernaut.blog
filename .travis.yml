@@ -2,8 +2,8 @@ language: ruby
 rvm:
    - 2.1.1
 before_install:
-   sudo apt-get update
-   bundle install
+   - sudo apt-get update
+   - bundle install
 
 install: true
 
