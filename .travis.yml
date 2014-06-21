@@ -1,0 +1,20 @@
+language: ruby
+rvm:
+   - 2.1.1
+before_install:
+   sudo apt-get update
+   bundle install
+
+install: true
+
+before_script: true
+
+script: "jekyll build"
+
+after_script: true
+
+# Whitelist only Master and Draft-* Branches
+branches:
+   only:
+      - master
+      - /^draft-.*$/
