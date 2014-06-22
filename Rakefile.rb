@@ -74,10 +74,11 @@ task :new_page, :title do |t, args|
   end
 end
 
-desc "Deploy Site via RSYNC"
+desc "Deploy Site via Git"
 task :deploy do
 	puts "## Deploying website"
-	if (system("rsync -rvzOe ssh --delete _site/ travis@blog.grubernaut.com:/var/www/grubernaut.blog/"))
+	#if (system("rsync -rvzOe ssh --delete _site/ travis@blog.grubernaut.com:/var/www/grubernaut.blog/"))
+	if (system("git push origin"))
 		puts "OK!"
 	else
 		puts "FAILED!!"
