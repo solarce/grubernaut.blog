@@ -78,7 +78,7 @@ desc "Deploy Site via Git"
 task :deploy do
 	puts "## Deploying website"
 	#if (system("rsync -rvzOe ssh --delete _site/ travis@blog.grubernaut.com:/var/www/grubernaut.blog/"))
-	if (system("scp -r _site/* travis@blog.grubernaut.com:/var/www/grubernaut.blog/"))
+	if (system("scp -r _site/* travis@blog.grubernaut.com:/var/www/grubernaut.blog"))
 		puts "OK!"
 	else
 		puts "FAILED!!"
