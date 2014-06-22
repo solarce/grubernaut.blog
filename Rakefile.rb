@@ -74,6 +74,16 @@ task :new_page, :title do |t, args|
   end
 end
 
+desc "Deploy Site via RSYNC"
+task :deploy do
+	puts "## Deploying website"
+	if system("rsync -avze 'ssh' --delete public/ travis:/var/www/grubernaut.blog/")
+		puts "OK"
+	else
+		puts "FAILED"
+	end
+end
+
 def get_stdin(message)
   print message
   STDIN.gets.chomp
