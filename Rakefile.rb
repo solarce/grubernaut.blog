@@ -77,7 +77,7 @@ end
 desc "Deploy Site via RSYNC"
 task :deploy do
 	puts "## Deploying website"
-	if (system("rsync -avze ssh --delete public/ travis@blog.grubernaut.com:~/grubernaut.blog/"))
+	if (system("rsync -avze ssh --delete _site/ travis@blog.grubernaut.com:~/grubernaut.blog/"))
 		puts "OK!"
 	else
 		puts "FAILED!!"
