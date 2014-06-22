@@ -30,6 +30,7 @@ script:
    - jekyll build
 
 after_script: 
+   # Can do this _or_ git push. Need to pick one.
    - bundle exec rake deploy
 
 env:
