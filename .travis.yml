@@ -17,6 +17,7 @@ install: true
 before_script:
    - git config --global user.name "Jake Champlin"
    - git config --global user.email "jake.champlin.27@gmail.com"
+   - git config --global push.default simple
 
    - git remote set-url origin $REPO.git
 
@@ -35,7 +36,7 @@ after_script:
 
 env:
    global:
-      - REPO="travis@blog.grubernaut.com:~/grubernaut.blog.git"
+      - REPO="travis@blog.grubernaut.com:~/grubernaut.blog"
       - secure: "Bj8fGOok6kuea/ZoCElUwdpV0gHZeoWgk/D+cYzYt07zktTmKvD7CJDcxCdX/BYBaU32G5GQw9WkIJTiObAKbHLAqinYeMvwQq2XZbUnRD+FjqTq3U/uSRs1xpf0JC68zpNpVvxOkTzHeZ1dNHZoWxx/lFaIg1DARdMLl3o+EhQ="
       - secure: "UL4Jo/FGWnTJ84/rVFNZMFK6SiunZ5bNcALmBpLQyiaTRuyGq6fNsyttJ5f2HRzSITYBwStVRtiSqNR/cLbUdEitusqS0QusXbOs0nyv+sO3wcPn4zzKrvVqLpgqhIcoKMF+IbXwj772gwgVgueMLLEOGeoSQcIXfLnRSgvyLe8="
       - secure: "Y86lzUMwh36jpg19ATOdvgjldQuO+yUTAFI0QCIh6EeeXrzmwzyX9LDwnM5JNdK4M236bF3AF4jsLrNdINTNHlB1cyCYEX769kbpQBIBD45+78rcuvDz0MFtUsu3A6oxZlNWoo7ZjZ9LSO+v9pIiEZD8g/52FNLo30CvdVe24CI="
