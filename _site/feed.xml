@@ -4,13 +4,106 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2014-06-21T16:40:36-04:00</updated>
+<updated>2014-07-03T17:47:41-04:00</updated>
 <id>/</id>
 <author>
   <name>Jake Champlin</name>
   <uri>/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Some Brief History]]></title>
+ <link rel="alternate" type="text/html" href="/some-brief-history/" />
+  <id>/some-brief-history</id>
+  <updated>2014-07-03 00:07:32 UTCT00:00:00-00:00</updated>
+  <published>2014-07-02T00:00:00-04:00</published>
+  
+  <author>
+    <name>Jake Champlin</name>
+    <uri></uri>
+    <email>jake.champlin.27@gmail.com</email>
+  </author>
+  <content type="html">&lt;blockquote&gt;
+  &lt;p&gt;“Life is like topography, Hobbes. There are summits of happiness and success, flat stretches of boring routine and valleys of frustration and failure.” 
+― Bill Watterson&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;why-even-write-this-post&quot;&gt;Why even write this post?&lt;/h4&gt;
+&lt;p&gt;Generally, I want to get this post out there to the masses as a blanket introduction of who I am, what I do, and what I want to do. I want this to serve as an introductory “Hello” from the imaginary office water fountain in my living room. I want to invite you into my life and hold no reservations about anything. I feel that the best quality of life can only be achieved through up front honesty and empathy. I have found that there can be no inner peace and self-satisfaction with my life, should I attempt to play any games, systems, or politics. So, in carrying that mantra forward in this post, I hope that by the end you achieve a clear and concise picture of Jake Champlin.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;where-to-begin&quot;&gt;Where to begin&lt;/h3&gt;
+&lt;p&gt;First of all, computers have always fascinated me. Scratch that. Empowered me. Given that I was born in one of the first “fortunate” generations of tech-ies, the first computer I ever got to play with was an old IBM PC-350 that had a whopping 1.6GB hard drive, 64MB of RAM, and 4MB of video memory. The mouse weighed a ton, the keyboard was an IBM Model-M, and the resolution would cause blindness by today’s standards, but I loved it. [I honestly loved the springs of the IBM Model-M, and they are mainly the reason I have Cherry MX-Blues in my mechanical keyboard today].My father had recently purchased a slew of 5 1/4” floppy disks of Commander Keen IV, Wolfenstein, and Doom. I was hooked. It didn’t matter that the machine ran horribly slow, or clunky. I was six years old, playing around in MS-DOS to enable God Mode in Wolfenstein. I quickly crashed the beloved IBM though, as playing around in DOS reading all of the HELP pages (I really hate MS-DOS’s internal documenting compared to UNIX) by deleting the entire C:&amp;gt; drive with a single command. &lt;/p&gt;
+
+&lt;p&gt;From there my love for video games and mainly everything that John Carmack had created, I loved. Halo LAN parties during high school, World of Warcraft and Diablo binges were routine in my high school career. Drinking nearly lethal amounts of B.A.W.L.S. and staying up for the whole weekend to beat an entire game in one sitting was not uncommon for us. And I loved everything about it. &lt;/p&gt;
+
+&lt;h3 id=&quot;getting-into-trouble-and-growing-from-it&quot;&gt;Getting into trouble and growing from it&lt;/h3&gt;
+&lt;p&gt;I really &lt;em&gt;have&lt;/em&gt; to thank my parents looking back, being honest and all. Without being constantly grounded from various electronic devices and locked out of all of our networking equipment I doubt I would have ever learned how a firewall works, or how to reset and reconfigure a router. Getting around my father’s security implementations was often more fun than the end goal. I learned how to capture packets of traffic, spoof the mac address of our router, and bypass all content filtering enabled at home. &lt;/p&gt;
+
+&lt;p&gt;By the time I had left high school I had: &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Migrated fully to Linux.&lt;/li&gt;
+  &lt;li&gt;Hacked my iPod Classic to run Linux [So I could play DOOM of course].&lt;/li&gt;
+  &lt;li&gt;Hacked my PSP to gain access to a wireless web browser before the firmware allowed it. (This was really cool actually. Done via a DNS change in a networked game). &lt;/li&gt;
+  &lt;li&gt;Two years of AP Java Programming classes.&lt;/li&gt;
+  &lt;li&gt;Competed in Science Olympiad contests where I programmed and built a mechanical robot. &lt;/li&gt;
+  &lt;li&gt;Built my own gaming computer.&lt;/li&gt;
+  &lt;li&gt;Multiple instances of “breaking” our home networking equipment to gain access to the internet. (Which I was &lt;em&gt;always&lt;/em&gt; grounded from).&lt;/li&gt;
+  &lt;li&gt;Learned networking hardware proficiently. Cable termination, Punch Down Blocks, Configuring Enterprise Switches / Routers, etc…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;college&quot;&gt;College&lt;/h3&gt;
+&lt;p&gt;I attended the University of Kentucky for Electrical Engineering. Ugh, I hate even typing that out. I really did not like the circuitry courses and Chemistry. Oh man, I &lt;em&gt;really&lt;/em&gt; hated my chemistry classes. I loved the programming classes though. I maintained very high marks in both semesters of C++ programming. I left UK after 1.5 years, and decided to work full time in the food industry. While this was not the smartest choice I have ever made, it sure did make me realize a lot about where I wanted my future to go. &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;beginning-my-professional-career&quot;&gt;Beginning my professional career&lt;/h3&gt;
+&lt;p&gt;After working full time and living in Lexington, KY for three years I decided to come back home to Columbus, Indiana. I wanted to give school another shot, and decided the local community college in town would be a great place to save money and learn the skills that I would need to escalate my professional career. 
+I got a job at a local computer repair store and that &lt;em&gt;really&lt;/em&gt; sparked my childhood interests in computers. Why I didn’t choose Computer Science as my major at UK, I can’t tell you. I don’t understand it either, honestly. &lt;/p&gt;
+
+&lt;h4 id=&quot;development-career&quot;&gt;Development Career&lt;/h4&gt;
+&lt;p&gt;While working at the local computer repair store I found a full time developer position at a local engineering firm. While the company took a huge risk in hiring me, they could see my potential and hunger to learn. The engineering company was a great first job. They allowed me the freedom to learn and grow at my own pace, while still teaching me the in’s and out’s of software development. As it was a small company, there was no operations team. The development team &lt;em&gt;was&lt;/em&gt; the operations team. This was no problem for me; installing, maintaining, and configuring Linux was what I really loved to do. And I did a lot of it. We ran all of our internal systems with various flavors of Gentoo Linux. Each of our systems ran a different kernel version, different package libraries, and different configurations. This really taught me a lot about the best development and operational practices.&lt;/p&gt;
+
+&lt;h4 id=&quot;operations-career&quot;&gt;Operations Career&lt;/h4&gt;
+&lt;p&gt;The engineering company has a sister company, a co-location data center, right next door. The previous Systems Administrator had recently left the position open, and I was graciously offered a chance to come aboard after only a year of working in development. I jumped at the offer. I was given the rare opportunity to join the data center’s staff, and thus began my first operations career. My &lt;em&gt;very&lt;/em&gt; first task was to completely tear down and re-build their entire VM cluster on new hypervisors. I cannot &lt;em&gt;begin&lt;/em&gt; to tell you how terrifying and exciting this was. I got to BUILD SYSTEMS! Using QEMU, libvirt, and my love for Linux I rebuilt their whole VM cluster on two new hypervisors; learning as I went.&lt;/p&gt;
+
+&lt;p&gt;I had no direct senior administrator to bounce ideas off of, and no outside help aside from IRC channels. There was also no developer at the data center, so I was charged with maintaining and building their internal Rails applications as well. Coupled with the various in-house Nagios scripts that checked various hardware around the building using Modbus TCP, I also developed a brand new Rails application, a Sinatra application, and a few trial NodeJS applications. &lt;/p&gt;
+
+&lt;p&gt;Learning how to manage and maintain the virtual machine cluster was one of the most fun and rewarding tasks I have ever accomplished at a job site. It was truly a pleasure to dig, discover, rebuild, and then maintain all of our internal VMs. &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;the-future&quot;&gt;The Future&lt;/h3&gt;
+&lt;p&gt;I hope to continue to enhance all of my skills in operations and administration, especially continuing to work with open source tools, utilities, and operating systems. I am really passionate about learning cloud infrastructure and automating infrastructure with code. I strongly feel that my background in development combined with administration and operations will help me to grow into a well rounded engineer. Just some of the things that I really want to do in the future are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cloud/Infrastructure Automation&lt;/li&gt;
+  &lt;li&gt;PaaS&lt;/li&gt;
+  &lt;li&gt;IaaS&lt;/li&gt;
+  &lt;li&gt;Virtualization&lt;/li&gt;
+  &lt;li&gt;Docker / LXC Containers&lt;/li&gt;
+  &lt;li&gt;Build Systems&lt;/li&gt;
+  &lt;li&gt;Deliver Seamless Product Throughput &lt;/li&gt;
+  &lt;li&gt;Learn as much as I can&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I really feel that culture and community can make or break a company. Some companies have it, some companies claim to have it, and most don’t even know what it is. From what I’ve seen, however, the companies that establish an environment of learning and creating are the most forward thinking and innovative. &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://born4rthis.files.wordpress.com/2014/01/michael-jordan-basketball-quotes.jpg&quot; alt=&quot;Jordan Quote&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;fin&quot;&gt;Fin&lt;/h2&gt;
+&lt;p&gt;Hopefully you’ve learned more about me from reading this. If you want to chat, I’m almost always on hangouts (jake.champlin.27@gmail.com) and &lt;a href=&quot;https://twitter.com/grubernaut&quot;&gt;twitter&lt;/a&gt;.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/some-brief-history/&quot;&gt;Some Brief History&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on July 02, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
