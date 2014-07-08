@@ -2,27 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Getting Saucy</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="" />
-<updated>2014-07-03T17:47:41-04:00</updated>
-<id>/</id>
+<link rel="self" type="application/atom+xml" href="http://blog.grubernaut.com/feed.xml" />
+<link rel="alternate" type="text/html" href="http://blog.grubernaut.com" />
+<updated>2014-07-08T17:03:08-04:00</updated>
+<id>http://blog.grubernaut.com/</id>
 <author>
   <name>Jake Champlin</name>
-  <uri>/</uri>
+  <uri>http://blog.grubernaut.com/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Some Brief History]]></title>
- <link rel="alternate" type="text/html" href="/some-brief-history/" />
-  <id>/some-brief-history</id>
+ <link rel="alternate" type="text/html" href="http://blog.grubernaut.com/some-brief-history/" />
+  <id>http://blog.grubernaut.com/some-brief-history</id>
   <updated>2014-07-03 00:07:32 UTCT00:00:00-00:00</updated>
   <published>2014-07-02T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>http://blog.grubernaut.com</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;blockquote&gt;
@@ -102,20 +102,20 @@ I got a job at a local computer repair store and that &lt;em&gt;really&lt;/em&gt
 &lt;h2 id=&quot;fin&quot;&gt;Fin&lt;/h2&gt;
 &lt;p&gt;Hopefully you’ve learned more about me from reading this. If you want to chat, I’m almost always on hangouts (jake.champlin.27@gmail.com) and &lt;a href=&quot;https://twitter.com/grubernaut&quot;&gt;twitter&lt;/a&gt;.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/some-brief-history/&quot;&gt;Some Brief History&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on July 02, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.grubernaut.com/some-brief-history/&quot;&gt;Some Brief History&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;http://blog.grubernaut.com&quot;&gt;Getting Saucy&lt;/a&gt; on July 02, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Setting up a Continuous Delivery Blog]]></title>
- <link rel="alternate" type="text/html" href="/vps-migration/" />
-  <id>/vps-migration</id>
+ <link rel="alternate" type="text/html" href="http://blog.grubernaut.com/vps-migration/" />
+  <id>http://blog.grubernaut.com/vps-migration</id>
   <updated>2014-06-21 18:29:10 UTCT00:00:00-00:00</updated>
   <published>2014-06-21T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>http://blog.grubernaut.com</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -205,20 +205,20 @@ Things like: &lt;/p&gt;
 
 &lt;p&gt;Eventually I would love to have this whole setup served from Chef cookbooks, and fully automated. This was a great introduction to how the infrastructure in Cloud-Land works though. &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/vps-migration/&quot;&gt;Setting up a Continuous Delivery Blog&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on June 21, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.grubernaut.com/vps-migration/&quot;&gt;Setting up a Continuous Delivery Blog&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;http://blog.grubernaut.com&quot;&gt;Getting Saucy&lt;/a&gt; on June 21, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[The effects of a DevOps community]]></title>
- <link rel="alternate" type="text/html" href="/the-effects-of-a-devops-community/" />
-  <id>/the-effects-of-a-devops-community</id>
+ <link rel="alternate" type="text/html" href="http://blog.grubernaut.com/the-effects-of-a-devops-community/" />
+  <id>http://blog.grubernaut.com/the-effects-of-a-devops-community</id>
   <updated>2014-06-03 01:22:47 UTCT00:00:00-00:00</updated>
   <published>2014-06-02T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>http://blog.grubernaut.com</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -264,20 +264,20 @@ This was the first time in my life that I had ever been fully accepted into an a
   &lt;p&gt;Calvin: “Sometimes when I’m talking, my words can’t keep up with my thoughts. I wonder why we think faster than we speak. Probably so we can think twice.” &lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/the-effects-of-a-devops-community/&quot;&gt;The effects of a DevOps community&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on June 02, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.grubernaut.com/the-effects-of-a-devops-community/&quot;&gt;The effects of a DevOps community&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;http://blog.grubernaut.com&quot;&gt;Getting Saucy&lt;/a&gt; on June 02, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Soylent Day 1]]></title>
- <link rel="alternate" type="text/html" href="/soylent-day-1/" />
-  <id>/soylent-day-1</id>
+ <link rel="alternate" type="text/html" href="http://blog.grubernaut.com/soylent-day-1/" />
+  <id>http://blog.grubernaut.com/soylent-day-1</id>
   <updated>2014-05-22 02:49:40 UTCT00:00:00-00:00</updated>
   <published>2014-05-21T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>http://blog.grubernaut.com</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -334,20 +334,20 @@ The second time I made the DIY Soylent, I split the weight of the dry ingredient
 &lt;p&gt;So far it was fairly easy until right before bedtime to go all day without food. The Soylent is actually fairly filling. After drinking half of a “meal”, I actually felt full and satisfied as if I had just eaten a large meal. 
 After fixing the taste of the Soylent, I can honestly see this being a viable solution to save money on nutritious food costs. &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/soylent-day-1/&quot;&gt;Soylent Day 1&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on May 21, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.grubernaut.com/soylent-day-1/&quot;&gt;Soylent Day 1&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;http://blog.grubernaut.com&quot;&gt;Getting Saucy&lt;/a&gt; on May 21, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Weekend at Prom]]></title>
- <link rel="alternate" type="text/html" href="/weekend-at-prom/" />
-  <id>/weekend-at-prom</id>
+ <link rel="alternate" type="text/html" href="http://blog.grubernaut.com/weekend-at-prom/" />
+  <id>http://blog.grubernaut.com/weekend-at-prom</id>
   <updated>2014-04-29 20:55:20 UTCT00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>http://blog.grubernaut.com</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;prom&quot;&gt;Prom&lt;/h2&gt;
@@ -383,20 +383,20 @@ While, I am far from being a social butterfly, it was a fun “Night on the town
   &lt;p&gt;Hobbes: So the secret to good self-esteem is to lower your expectations to the point where they’re already met?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.grubernaut.com/weekend-at-prom/&quot;&gt;Weekend at Prom&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;http://blog.grubernaut.com&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Syncing Sublime Text with Dropbox]]></title>
- <link rel="alternate" type="text/html" href="/syncing-sublime-text-settings-with-dropbox/" />
-  <id>/syncing-sublime-text-settings-with-dropbox</id>
+ <link rel="alternate" type="text/html" href="http://blog.grubernaut.com/syncing-sublime-text-settings-with-dropbox/" />
+  <id>http://blog.grubernaut.com/syncing-sublime-text-settings-with-dropbox</id>
   <updated>2014-04-30 02:49:50 UTCT00:00:00-00:00</updated>
   <published>2014-04-29T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>http://blog.grubernaut.com</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;figure&gt;
@@ -475,20 +475,20 @@ I’ll cover my Sublime Text configuration later on in the post. &lt;/p&gt;
   &lt;p&gt;Life is like topography, Hobbes. There are summits of happiness and success, flat stretches of boring routine and valleys of frustration and failure.  &lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.grubernaut.com/syncing-sublime-text-settings-with-dropbox/&quot;&gt;Syncing Sublime Text with Dropbox&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;http://blog.grubernaut.com&quot;&gt;Getting Saucy&lt;/a&gt; on April 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Wiring Project / Friday Update]]></title>
- <link rel="alternate" type="text/html" href="/wiring-project-slash-friday-update/" />
-  <id>/wiring-project-slash-friday-update</id>
+ <link rel="alternate" type="text/html" href="http://blog.grubernaut.com/wiring-project-slash-friday-update/" />
+  <id>http://blog.grubernaut.com/wiring-project-slash-friday-update</id>
   <updated>2014-04-25 20:49:10 UTCT00:00:00-00:00</updated>
   <published>2014-04-25T00:00:00-04:00</published>
   
   <author>
     <name>Jake Champlin</name>
-    <uri></uri>
+    <uri>http://blog.grubernaut.com</uri>
     <email>jake.champlin.27@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This past week at work I’ve had the fortunate opportunity to start wiring on our new
@@ -547,7 +547,7 @@ project is completed. &lt;/p&gt;
 &lt;p&gt;Most of my Saturday night will be taken up at &lt;a href=&quot;http://capadultprom.com&quot;&gt;CAP Adult Prom&lt;/a&gt;,
 so I hope I can get some fun time to work on some stuff.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.grubernaut.com/wiring-project-slash-friday-update/&quot;&gt;Wiring Project / Friday Update&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;http://blog.grubernaut.com&quot;&gt;Getting Saucy&lt;/a&gt; on April 25, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
