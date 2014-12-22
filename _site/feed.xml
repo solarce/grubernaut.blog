@@ -4,13 +4,251 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.grubernaut.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.grubernaut.com" />
-<updated>2014-07-08T17:03:08-04:00</updated>
+<updated>2014-12-22T18:41:07-05:00</updated>
 <id>http://blog.grubernaut.com/</id>
 <author>
   <name>Jake Champlin</name>
   <uri>http://blog.grubernaut.com/</uri>
   <email>jake.champlin.27@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Kitchen Magic]]></title>
+ <link rel="alternate" type="text/html" href="http://blog.grubernaut.com/kitchen-magic/" />
+  <id>http://blog.grubernaut.com/kitchen-magic</id>
+  <updated>2014-12-08 17:50:10 UTCT00:00:00-00:00</updated>
+  <published>2014-12-08T00:00:00-05:00</published>
+  
+  <author>
+    <name>Jake Champlin</name>
+    <uri>http://blog.grubernaut.com</uri>
+    <email>jake.champlin.27@gmail.com</email>
+  </author>
+  <content type="html">&lt;h1 id=&quot;creating-some-kitchen-magic-with-puppet&quot;&gt;Creating some kitchen magic with Puppet&lt;/h1&gt;
+&lt;p&gt;At my current organization (The lovely folks at &lt;a href=&quot;http://www.minted.com&quot;&gt;Minted&lt;/a&gt;), we use Puppet for configuration management. At first I was fairly skeptical of using Puppet, having learned Chef in a past life, but I have given it my all. The main thing that has bugged me, however, about learning and using Puppet is the lack of a prescribed testing framework. There are other tools that are still maturing every day and actually work quite well for their designed purpose. &lt;a href=&quot;https://github.com/puppetlabs/beaker&quot;&gt;Beaker&lt;/a&gt; is one such tool that works fairly well for it’s designed purpose. The only hangup that our organization had with Beaker is the dependency of a Puppet Master. We currently run a masterless Puppet, using Git and Fabric to schedule and kickoff Puppet runs on individual nodes. We needed a localized testing framework to test our Puppet manifests and modules without changing our whole internal infrastructure.&lt;/p&gt;
+
+&lt;p&gt;Some of the key requirements that we held for a testing framework were:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Local Testing&lt;/li&gt;
+  &lt;li&gt;Easy Integration with current testing frameworks (Serverspec, RSpec, BATS, etc…)&lt;/li&gt;
+  &lt;li&gt;Parallel testing&lt;/li&gt;
+  &lt;li&gt;Cheap&lt;/li&gt;
+  &lt;li&gt;Fast&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;lets-begin-cooking&quot;&gt;Let’s begin cooking&lt;/h2&gt;
+&lt;p&gt;Enter &lt;a href=&quot;https://github.com/test-kitchen/test-kitchen&quot;&gt;Test-Kitchen&lt;/a&gt;. Test Kitchen provides us with the framework to test all of our puppet modules, in one run, in parallel, while using a busser for our existing testing framework.
+“But Wait!”, you say. “Test Kitchen is for Chef!”. This is where &lt;a href=&quot;https://github.com/neillturner/kitchen-puppet&quot;&gt;Kitchen-Puppet&lt;/a&gt; comes in. Kitchen Puppet is a provisioner driver for test-kitchen. This is the same as Chef-Solo and Chef-Zero. Since our organization uses masterless puppet, this fits into our infrastructure with grace. Kitchen-Puppet allows us to use Test-Kitchen’s existing testing framework, and provision our test subject with a “puppet apply” command. Be sure to read the full set of &lt;a href=&quot;https://github.com/neillturner/kitchen-puppet/blob/master/provisioner_options.md&quot;&gt;Provisioner Options&lt;/a&gt; for Kitchen-Puppet as well. Not only can you set provisioner options in the provisioner config block in the test-kitchen yaml config, but you can set provisioner options per test suite. We use this functionality at Minted to test different roles based on custom Facter Facts passed to the test suites.&lt;/p&gt;
+
+&lt;p&gt;Enter &lt;a href=&quot;https://github.com/portertech/kitchen-docker&quot;&gt;Kitchen-Docker&lt;/a&gt;. Kitchen Docker allows us to have exceedingly fast tests ran against multiple test suites at the same time. Plus it’s Docker, so you know it’s cool. If you’re running on an inferior Operating System such as OSX, you’ll need to install and become familiar with &lt;a href=&quot;http://boot2docker.io/&quot;&gt;Boot2Docker&lt;/a&gt; before moving any further. Our Kitchen setup takes advantage of Boot2Docker by using the “DOCKER_HOST” environment variable. Depending on how many suites you want to run and how many you want to test in a convurrent mannor, it may no longer be wise to run all of your containers locally, whether through Boot2Docker or natively. Using the environment variable “DOCKER_HOST”, it is even possible to spin up a remote EC2 instance to host all of your testing containers. This situation would be extremely beneficial for automated testing from Jenkins, TravisCI, and others.&lt;/p&gt;
+
+&lt;h3 id=&quot;our-setup&quot;&gt;Our Setup&lt;/h3&gt;
+
+&lt;p&gt;I have created a github repo for this post as well. Simply clone the repo, and test to your liking. :)
+&lt;a href=&quot;https://github.com/grubernaut/kitchen-example&quot;&gt;grubernaut-kitchen-example&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; .
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; ├── Gemfile
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; ├── Gemfile.lock
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; ├── manifests
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; │   └── site.pp
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; ├── &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; │   └── integration
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; │       └── webserver
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; │           └── serverspec
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; │               └── default_spec.rb
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; └── ubuntu12.04-dockerfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;mise-en-place&quot;&gt;Mise-en-place&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Getting things setup&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Gemfile:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://rubygems.org&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rake&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;serverspec&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;puppet&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;kitchen-docker&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;kitchen-puppet&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;test-kitchen&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice in the following configuration file, we specifically declare which manifest to run under the provisioner hash. This is not necessary, of course, but merely a way to show how one can set provisioner-specific options for individual suites. We use this at Minted to set custom facter facts per test suite.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.kitchen.yml:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;yaml&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt;   &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;docker&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;provisioner&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt;   &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;puppet_apply&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;   &lt;span class=&quot;l-Scalar-Plain&quot;&gt;puppet_version&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;3.5.1-1puppetlabs1&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;   &lt;span class=&quot;l-Scalar-Plain&quot;&gt;manifests_path&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;manifests&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;   &lt;span class=&quot;l-Scalar-Plain&quot;&gt;modules_path&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;modules&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;   &lt;span class=&quot;l-Scalar-Plain&quot;&gt;require_chef_for_busser&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;platforms&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;   &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;ubuntu&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;     &lt;span class=&quot;l-Scalar-Plain&quot;&gt;driver_config&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;       &lt;span class=&quot;l-Scalar-Plain&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;ubuntu:12.04&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;       &lt;span class=&quot;l-Scalar-Plain&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;&amp;lt;%= ENV[&amp;#39;DOCKER_HOST&amp;#39;] %&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;       &lt;span class=&quot;l-Scalar-Plain&quot;&gt;use_cache&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;       &lt;span class=&quot;l-Scalar-Plain&quot;&gt;dockerfile&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;ubuntu12.04-dockerfile&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;suites&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt;   &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;webserver&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt;     &lt;span class=&quot;l-Scalar-Plain&quot;&gt;provisioner&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt;       &lt;span class=&quot;l-Scalar-Plain&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;site.pp&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;One very important peice of the puzzle is the platform configuration. Here we are setting all of the settings necessary for kitchen and and kitchen-docker driver to talk to each other. Remember, if you are running Linux natively, you shouldn’t have to set a DOCKER_HOST environment variable. Unless, of course, you wish to run docker on a remote host. When running on OSX, you should already have the DOCKER_HOST environment variable set as a result of installing Boot2Docker.
+We can, by all means, add custom provisioning steps to the base docker image, but I like to separate these steps out into a Dockerfile. There are, however, excellent base images for Ubuntu 14.04, see &lt;a href=&quot;https://github.com/phusion/baseimage-docker&quot;&gt;Phusion’s Base Docker Image&lt;/a&gt;; but I wanted to highlight the kitchen-docker feature of including your own custom Dockerfile inside of test-kitchen. This will allow you to customize the docker images for your organization beyond the scope of a base image. And that is what I am doing here with this Dockerfile&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ubuntu12.04-dockerfile:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Use Ubuntu Precise&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; FROM ubuntu:12.04
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;## Basic Docker Setup for Ubuntu&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Disable Upstart&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; RUN dpkg-divert --local --rename --add /sbin/initctl
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; RUN ln -sf /bin/true /sbin/initctl
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; ENV DEBIAN_FRONTEND noninteractive
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; RUN apt-get -y update
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; RUN apt-get install -y sudo openssh-server curl lsb-release
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;## Add Test-Kitchen Dependencies&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; RUN useradd -d /home/kitchen -m -s /bin/bash kitchen
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; RUN &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;kitchen:kitchen&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; chpasswd
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt; RUN &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;kitchen ALL=(ALL) NOPASSWD:ALL&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/sudoers
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Inside of the above kitchen config I added custom facter facts for the webserver suite to simply show how to set provisioner-specific options on a suite-by-suite basis. Now that we have the groundwork laid out, we need a manifest to provision. This is a very basic site manifest, but should be enough to demonstrate our purposes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;manifests/site.pp:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;puppet&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;c-Singleline&quot;&gt;# Install a package&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;ensure&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;installed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;c-Singleline&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;c-Singleline&quot;&gt;# Install a user called snorlax&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;snorlax&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;ensure&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;present&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;groups&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sudo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;home&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/home/snorlax&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;managehome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;shell&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/bin/bash&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We also need to write a serverspec test for the manifest above. Again, keeping with our simple theme, we should test all of the resources that we have defined in our manifest. Notice the file path for the serverspec test. This is required by the test-kitchen busser, which we will talk about later.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;test/integration/webserver/serverspec/default_spec.rb:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Encoding: utf-8&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;serverspec&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:backend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:exec&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/sbin:/usr/local/sbin:$PATH&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;package&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;vim&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be_installed&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;snorlax&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exist&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We should have the groundwork all laid out for our testing to begin.&lt;/p&gt;
+
+&lt;h3 id=&quot;fire-ze-missiles&quot;&gt;Fire ‘Ze Missiles!!!&lt;/h3&gt;
+
+&lt;p&gt;We need gems installed,of course, to be able to test our infrastructure that we are creating.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;% bundle install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Once all of our gems are installed, we should be able to run test-kitchen and see our instance suite waiting to be converged:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;% kitchen list
+Instance              Driver  Provisioner  Last Action
+webserver-ubuntu      Docker  PuppetApply  Created
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If everything went smoothly, we should be able to now Create, Converge, and Test our “webserver” instance. Notice how test-kitchen actually installs chef during the output of the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;% kitchen converge webserver-ubuntu
+Installing Chef
+installing with dpkg...
+Selecting previously unselected package chef.
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Reading database ...
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Reading database ...        39770 files and directories currently installed.&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Unpacking chef &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;from .../chef_12.0.3-1_amd64.deb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
+Setting up chef &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;12.0.3-1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
+Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!
+Transfering files to &amp;lt;webserver-ubuntu&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We actually want Test-Kitchen to behave in this fashion. This allows us to use chef-busser for all of our tests. Which is the real point of this whole project! Now we can run “kitchen test” and test-kitchen will create our docker instance, provision the instance with puppet, test the instance with serverspec, and then destroy our instance. All in one command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;Finished converging &amp;lt;webserver-ubuntu&amp;gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1m51.92s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+-----&amp;gt; Setting up &amp;lt;webserver-ubuntu&amp;gt;...
+Fetching: thor-0.19.0.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Successfully installed thor-0.19.0
+Fetching: busser-0.6.2.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Successfully installed busser-0.6.2
+2 gems installed
+-----&amp;gt; Setting up Busser
+Creating BUSSER_ROOT in /tmp/busser
+Creating busser binstub
+Plugin serverspec installed &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;version 0.5.3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+-----&amp;gt; Running postinstall &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;serverspec plugin
+Finished setting up &amp;lt;webserver-ubuntu&amp;gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0m9.15s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+-----&amp;gt; Verifying &amp;lt;webserver-ubuntu&amp;gt;...
+Suite path directory /tmp/busser/suites does not exist, skipping.
+Uploading /tmp/busser/suites/serverspec/default_spec.rb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0644&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+-----&amp;gt; Running serverspec &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;suite
+-----&amp;gt; Installing Serverspec..
+Fetching: net-ssh-2.9.1.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: net-scp-1.2.1.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: specinfra-2.10.4.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: multi_json-1.10.1.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: diff-lcs-1.2.5.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: rspec-support-3.1.2.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: rspec-expectations-3.1.2.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: rspec-core-3.1.7.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: rspec-its-1.1.0.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: rspec-mocks-3.1.3.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: rspec-3.1.0.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Fetching: serverspec-2.7.1.gem &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+-----&amp;gt; serverspec installed &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;version 2.7.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+/opt/chef/embedded/bin/ruby -I/tmp/busser/suites/serverspec -I/tmp/busser/gems/gems/rspec-support-3.1.2/lib:/tmp/busser/gems/gems/rspec-core-3.1.7/lib /opt/chef/embedded/bin/rspec --pattern /tmp/busser/suites/serverspec/&lt;span class=&quot;se&quot;&gt;\*\*&lt;/span&gt;/&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;_spec.rb --color --format documentation --default-path /tmp/busser/suites/serverspec
+
+Package &lt;span class=&quot;s2&quot;&gt;&amp;quot;vim&amp;quot;&lt;/span&gt;
+should be installed
+
+User &lt;span class=&quot;s2&quot;&gt;&amp;quot;snorlax&amp;quot;&lt;/span&gt;
+should exist
+
+Finished in 0.05471 seconds &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;files took 0.17188 seconds to load&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+2 examples, 0 failures
+Finished verifying &amp;lt;webserver-ubuntu&amp;gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0m7.45s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can also run “kitchen verify” to test an already running instance without destroying the instance.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this helps you setup and start testing your puppet infrastructure using Test-Kitchen, Puppet, and Docker!&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.grubernaut.com/kitchen-magic/&quot;&gt;Kitchen Magic&lt;/a&gt; was originally published by Jake Champlin at &lt;a href=&quot;http://blog.grubernaut.com&quot;&gt;Getting Saucy&lt;/a&gt; on December 08, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -298,7 +536,7 @@ This was the first time in my life that I had ever been fully accepted into an a
 
 &lt;figure&gt;
 	&lt;img src=&quot;/images/soylent/nutrition.png&quot; /&gt;
-	&lt;figcaption&gt;People&#39;s Chow Nutrition Information&lt;/figcaption&gt;
+	&lt;figcaption&gt;People's Chow Nutrition Information&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;

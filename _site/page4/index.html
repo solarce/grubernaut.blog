@@ -137,6 +137,93 @@
   
 <article class="hentry">
   <header>
+    <div class="entry-meta"><span class="entry-date date published updated"><time datetime="2014-04-29T00:00:00-04:00"><a href="http://blog.grubernaut.com/syncing-sublime-text-settings-with-dropbox/">April 29, 2014</a></time></span><span class="author vcard"><span class="fn"><a href="http://blog.grubernaut.com/about/" title="About Jake Champlin">Jake Champlin</a></span></span>&nbsp; &bull; &nbsp;<span class="entry-comments"><a href="http://blog.grubernaut.com/syncing-sublime-text-settings-with-dropbox/#disqus_thread">Comment</a></span></div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="http://blog.grubernaut.com/syncing-sublime-text-settings-with-dropbox/" rel="bookmark" title="Syncing Sublime Text with Dropbox" itemprop="url">Syncing Sublime Text with Dropbox</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <figure>
+	<img src="/images/sublime/sublime1.png" />
+	<figcaption>Current Sublime Text 2 Setup</figcaption>
+</figure>
+
+<h3 id="syncing-user-packages-for-sublime-text-2">Syncing User Packages for Sublime Text 2</h3>
+<p>Recently (read as: “This Week”) I’ve nearly fallen in love with <a href="http://www.sublimetext.com">Sublime Text</a> and you should seriously try it out if you haven’t already. You can use Sublime Text and evaluate it for free, yet a license must be purchased for continued use. I’ve used it for the past week now, and started the process of configuring my development bed around Sublime Text. 
+I’ll cover my Sublime Text configuration later on in the post. </p>
+
+<p>One of the first issues I ran into with Sublime Text was maintaining a concurrent setup across my iMac at work and my MBP at home. As a native Vim lover, I was used to creating a symbolic link to a Dropbox file of my .vimrc and .vim directories. And in fact, it is quite the same process for Sublime Text. </p>
+
+<h2 id="osx">OSX</h2>
+<p>In OSX, first find which machine you wish to copy the settings from. 
+<em>hint:</em> it’s the Sublime Text 2 that you have already fully configured to your liking at the time. </p>
+
+<p>On that machine make sure that Sublime Text 2 is fully closed, then create a Dropbox folder to hold your User Packages folder. Then create a symbolic link between the two. </p>
+
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> <span class="nb">cd</span> ~/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/
+<span class="lineno">2</span> mkdir ~/Dropbox/Sublime
+<span class="lineno">3</span> mv User ~/Dropbox/Sublime/
+<span class="lineno">4</span> ln -s ~/Dropbox/Sublime/User
+</code></pre></div>
+
+<p><em>Note:</em> If your Dropbox folder is mounted in a different directory than <code>~/Dropbox</code> then replace the directory path specified above with the path to your local Dropbox directory. </p>
+
+<p><strong>Sublime Text 3:</strong> Simply replace the <code>Sublime\ Text\ 2/</code> directory with: <code>Sublime\ Text\ 3/</code> directory path. </p>
+
+<p>Then on every subsequent machine that you wish to sync your Sublime Text settings with, remove your User Packages directory and create a symbolic link to your Dropbox User directory. </p>
+
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> <span class="nb">cd</span> ~/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/
+<span class="lineno">2</span> rm -r User
+<span class="lineno">3</span> ln -s ~/Dropbox/Sublime/User
+</code></pre></div>
+
+<p>When you start up Sublime Text again on the subsequent machines, Sublime Text will start to download and install all the packages from your User Packages directory. As well as implement all of your settings specified in your User Settings. 
+<em>Note:</em> If you are working with a fresh install of Sublime Text, you will have to install <a href="https://sublime.wbond.net/installation#st2">Package Control</a> before any packages can be synced. </p>
+
+<h3 id="my-sublime-text-configuration">My Sublime Text Configuration</h3>
+<p><em>As of 4/29/14. WIP</em></p>
+
+<p>My Currently Used Packages:</p>
+
+<ul>
+  <li><a href="https://github.com/kemayo/sublime-text-git/wiki">Git</a></li>
+  <li><a href="https://github.com/revolunet/sublimetext-markdown-preview">Markdown Preview</a></li>
+  <li><a href="http://wbond.net/sublime_packages/sftp">SFTP</a></li>
+  <li><a href="https://github.com/afterdesign/MacTerminal">MacTerminal</a></li>
+  <li><a href="https://github.com/jisaacks/GitGutter">GitGutter</a> - Extremely Nice, Highly recommended. </li>
+  <li><a href="https://github.com/netpro2k/SublimeBlockCursor">Sublime Block Cursor</a> - Because with vintage mode it’s near impossible to see the cursor in default. </li>
+  <li><a href="https://github.com/buymeasoda/soda-theme/">Theme - Soda</a> - Really makes Sublime more <em>Mac</em> like. Beautiful. </li>
+  <li><a href="https://sublime.wbond.net/installation">Package Control</a></li>
+</ul>
+
+<p>My Current User Settings: </p>
+
+<div class="highlight"><pre><code class="json"><span class="lineno"> 1</span> <span class="p">{</span>
+<span class="lineno"> 2</span> 	<span class="nt">&quot;bold_folder_labels&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 3</span> 	<span class="nt">&quot;color_scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;Packages/Color Scheme - Default/Monokai.tmTheme&quot;</span><span class="p">,</span>
+<span class="lineno"> 4</span> 	<span class="nt">&quot;fade_fold_buttons&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="lineno"> 5</span> 	<span class="nt">&quot;highlight_line&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 6</span> 	<span class="nt">&quot;ignored_packages&quot;</span><span class="p">:</span>
+<span class="lineno"> 7</span> 	<span class="p">[</span>
+<span class="lineno"> 8</span> 	<span class="p">],</span>
+<span class="lineno"> 9</span> 	<span class="nt">&quot;line_padding_bottom&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="lineno">10</span> 	<span class="nt">&quot;line_padding_top&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="lineno">11</span> 	<span class="nt">&quot;theme&quot;</span><span class="p">:</span> <span class="s2">&quot;Soda Dark.sublime-theme&quot;</span><span class="p">,</span>
+<span class="lineno">12</span> 	<span class="nt">&quot;vintage_start_in_command_mode&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="lineno">13</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>Yes, of course I use vintage mode, and start in command mode. Some habits never change.</p>
+
+<blockquote>
+  <p>Life is like topography, Hobbes. There are summits of happiness and success, flat stretches of boring routine and valleys of frustration and failure.  </p>
+</blockquote>
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+<article class="hentry">
+  <header>
     <div class="entry-meta"><span class="entry-date date published updated"><time datetime="2014-04-25T00:00:00-04:00"><a href="http://blog.grubernaut.com/wiring-project-slash-friday-update/">April 25, 2014</a></time></span><span class="author vcard"><span class="fn"><a href="http://blog.grubernaut.com/about/" title="About Jake Champlin">Jake Champlin</a></span></span>&nbsp; &bull; &nbsp;<span class="entry-comments"><a href="http://blog.grubernaut.com/wiring-project-slash-friday-update/#disqus_thread">Comment</a></span></div><!-- /.entry-meta -->
     
       <h1 class="entry-title"><a href="http://blog.grubernaut.com/wiring-project-slash-friday-update/" rel="bookmark" title="Wiring Project / Friday Update" itemprop="url">Wiring Project / Friday Update</a></h1>

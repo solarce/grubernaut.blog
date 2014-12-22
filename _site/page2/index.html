@@ -137,6 +137,104 @@
   
 <article class="hentry">
   <header>
+    <div class="entry-meta"><span class="entry-date date published updated"><time datetime="2014-06-21T00:00:00-04:00"><a href="http://blog.grubernaut.com/vps-migration/">June 21, 2014</a></time></span><span class="author vcard"><span class="fn"><a href="http://blog.grubernaut.com/about/" title="About Jake Champlin">Jake Champlin</a></span></span>&nbsp; &bull; &nbsp;<span class="entry-comments"><a href="http://blog.grubernaut.com/vps-migration/#disqus_thread">Comment</a></span></div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="http://blog.grubernaut.com/vps-migration/" rel="bookmark" title="Setting up a Continuous Delivery Blog" itemprop="url">Setting up a Continuous Delivery Blog</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <figure>
+  <img src="/images/vps/digitalocean.jpeg" />
+  <figcaption>Digital Ocean - https://twitter.com/bryanl/status/479606602186895360</figcaption>
+</figure>
+
+<h3 id="background">Background</h3>
+<p>Growing up I never really had the capital to invest in a home setup, nor were my parents ever going to let me near the networking equipment after capturing packets of web traffic from my parents. Getting my own house for the first time last year and purchasing my own networking equipment opened up a lot of doors for me. I was now able to finally publish something on the public internet that I owned. The only problem with this arose with the financial costs of running bare metal servers at home, and the overhead cost I would need to begin such a project. </p>
+
+<p>I was talking to Brandon Burton (<a href="https://twitter.com/solarce">@solarce</a>) recently and he told me stories of his first stack that he hosted himself. Remembering that I still hadn’t achieved that goal yet, I set out to remedy this problem as quickly as I could. </p>
+
+<p>Owning bare metal servers would still be a costly venture for me today. I would have to pay for the power consumption, the networking equipment to ensure security, and the increased bandwidth of my internet connection. Thus, configuring a VPS would be my best option. </p>
+
+<p>I chose Digital Ocean purely out of simplicity. I could have gone the Amazon AWS route, and still may in the future, but I wanted to start this project ASAP, and was itching to get tinkering with setup. This is my bare and basic write-up of how I migrated my Jekyll blog from a GitHub Pages site to a cloud hosted blog with Digital Ocean. </p>
+
+<h2 id="migrating-my-personal-blog-to-a-digital-ocean-droplet">Migrating my personal blog to a Digital Ocean Droplet</h2>
+<p>First things first, I needed to actually create a <a href="https://www.digitalocean.com">Digital Ocean</a> Droplet. Creating a droplet on <a href="https://www.digitalocean.com">Digital Ocean</a> was actually the easiest part of this whole process. I was entirely pleased with the whole setup of my account, the ease of integrating 2-Factor Authentication, and setting up billing via PayPal for my droplet. </p>
+
+<h3 id="setting-up-a-digital-ocean-droplet">Setting up a Digital Ocean Droplet</h3>
+<p>Once I had a few coins in my Digital Ocean account and my SSH-keys added to my Digital Ocean account, starting a new Digital Ocean droplet couldn’t have been easier. I selected the type of VPS that I wanted, the image I wanted on it, the SSH-Keys I needed, and I was good to go. In 60 seconds I had a working droplet with Ubuntu-14.04 and root access. I was in! </p>
+
+<h3 id="buying-a-domain-name">Buying a Domain Name</h3>
+<p>To be honest, I didn’t particularly shop around for the cheapest domain name available, and went with the simpler option of GoDaddy.com. All jokes aside, it was a fairly simple and easy process that allowed me to pay via PayPal for my domain name. $13 bucks and I had grubernaut.com as a domain name. </p>
+
+<h3 id="routing-dns-from-godaddy-to-digital-ocean">Routing DNS from GoDaddy to Digital Ocean</h3>
+<p>This…. took me a while. I had to remember that GoDaddy.com was the DNR for the domain, and would need different nameservers specified to point to Digital Ocean. After removing all of the A Records, CNAME Records, and MX Records that GoDaddy.com initializes with, I was left with a bare Zone Record on GoDaddy.com. Aside from the three nameservers provided from Digital Ocean. </p>
+<figure>
+  <img src="/images/vps/nameservers.png" />
+  <figcaption>Nameservers from Digital Ocean</figcaption>
+</figure>
+
+<p>After adding the correct nameservers to GoDaddy.com, I then had to edit my Digital Ocean’s Zone File as well. I needed an A Record that pointed all traffic to my blog, as well as specific trafic for my blog to route correctly. </p>
+<figure>
+  <img src="/images/vps/do-dns1.jpg" />
+  <figcaption>DNS on Digital Ocean</figcaption>
+</figure>
+
+<p>Having that all setup, I was now able to ping grubernaut.com, www.grubernaut.com, and blog.grubernaut.com and have them all resolve to my blog droplet’s IP address. </p>
+
+<h3 id="setting-up-continuous-delivery">Setting up Continuous Delivery</h3>
+<p>Setting up continuous delivery inside of my droplet was fairly easy since I was using Git as a versioning tool. 
+First, I logged into my droplet and created a remote git server. 
+Then, I initialized a bare repository, and created a new post-receive hook. (This would be where the continuous delivery comes in!). </p>
+
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> mkdir grubernaut.blog.git
+<span class="lineno">2</span> <span class="nb">cd </span>grubernaut.blog.git
+<span class="lineno">3</span> git --bare init
+<span class="lineno">4</span> touch hooks/post-receive
+</code></pre></div>
+
+<p>I opened up the <strong>only</strong> editor there is (ViM) and wrote my post-receive hook. </p>
+
+<div class="highlight"><pre><code class="bash"><span class="lineno"> 1</span> <span class="c">#!/bin/bash</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="nv">GIT_REPO</span><span class="o">=</span><span class="nv">$HOME</span>/grubernaut.blog.git
+<span class="lineno"> 4</span> <span class="nv">TMP_GIT_CLONE</span><span class="o">=</span><span class="nv">$HOME</span>/tmp/grubernaut.blog
+<span class="lineno"> 5</span> <span class="nv">PUBLIC_WWW</span><span class="o">=</span>/var/www/grubernaut.blog
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> git clone <span class="nv">$GIT_REPO</span> <span class="nv">$TMP_GIT_CLONE</span>
+<span class="lineno"> 8</span> jekyll build -s <span class="nv">$TMP_GIT_CLONE</span> -d <span class="nv">$PUBLIC_WWW</span>
+<span class="lineno"> 9</span> rm -Rf <span class="nv">$TMP_GIT_CLONE</span>
+<span class="lineno">10</span> <span class="nb">exit</span>
+</code></pre></div>
+
+<p>This hook would clone my repository into a temporary directory, build my site with jekyll, and place the built site into a public directory. And this hook would run after every commit that was received. </p>
+
+<p>The only thing left to do on my droplet was to configure Apache2 to point to <code>/var/www/grubernaut.blog/</code> and I was all set!</p>
+
+<h3 id="configuring-workstation-repo">Configuring Workstation Repo</h3>
+<p>On my development workstation, I had to do some slight configuration to be able to push to my droplet and have it be automagically deployed. Luckily this is just a simple one-line git command. 
+<code>bash
+git remote add deploy &lt;user&gt;@&lt;site&gt;:~/&lt;path-to-repo&gt;.git
+</code>
+From there I can now run a <code>git push deploy master</code> and git will take care of the deployment chain for me. </p>
+
+<h3 id="final-thoughts-and-future-plans">Final Thoughts and Future Plans</h3>
+<p>Overall, this was a tremendous learning experience for me, and a great introduction to VPS’s. My goal now is to spin up more Droplets on Digital Ocean and start building a full stack of Droplets. 
+Things like: </p>
+
+<ul>
+  <li>A VPN Server</li>
+  <li>A ZNC IRC Bouncer (Something I’ve wanted for a while)</li>
+  <li>A Sensu Server to monitor my stack</li>
+  <li>etc…</li>
+</ul>
+
+<p>Eventually I would love to have this whole setup served from Chef cookbooks, and fully automated. This was a great introduction to how the infrastructure in Cloud-Land works though. </p>
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+<article class="hentry">
+  <header>
     <div class="entry-meta"><span class="entry-date date published updated"><time datetime="2014-06-02T00:00:00-04:00"><a href="http://blog.grubernaut.com/the-effects-of-a-devops-community/">June 02, 2014</a></time></span><span class="author vcard"><span class="fn"><a href="http://blog.grubernaut.com/about/" title="About Jake Champlin">Jake Champlin</a></span></span>&nbsp; &bull; &nbsp;<span class="entry-comments"><a href="http://blog.grubernaut.com/the-effects-of-a-devops-community/#disqus_thread">Comment</a></span></div><!-- /.entry-meta -->
     
       <h1 class="entry-title"><a href="http://blog.grubernaut.com/the-effects-of-a-devops-community/" rel="bookmark" title="The effects of a DevOps community" itemprop="url">The effects of a DevOps community</a></h1>
@@ -185,71 +283,6 @@ This was the first time in my life that I had ever been fully accepted into an a
 <blockquote>
   <p>Calvin: “Sometimes when I’m talking, my words can’t keep up with my thoughts. I wonder why we think faster than we speak. Probably so we can think twice.” </p>
 </blockquote>
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-<article class="hentry">
-  <header>
-    <div class="entry-meta"><span class="entry-date date published updated"><time datetime="2014-05-21T00:00:00-04:00"><a href="http://blog.grubernaut.com/soylent-day-1/">May 21, 2014</a></time></span><span class="author vcard"><span class="fn"><a href="http://blog.grubernaut.com/about/" title="About Jake Champlin">Jake Champlin</a></span></span>&nbsp; &bull; &nbsp;<span class="entry-comments"><a href="http://blog.grubernaut.com/soylent-day-1/#disqus_thread">Comment</a></span></div><!-- /.entry-meta -->
-    
-      <h1 class="entry-title"><a href="http://blog.grubernaut.com/soylent-day-1/" rel="bookmark" title="Soylent Day 1" itemprop="url">Soylent Day 1</a></h1>
-    
-  </header>
-  <div class="entry-content">
-    <figure>
-	<img src="/images/soylent/soylent_view.jpeg" />
-	<figcaption>DIY Soylent</figcaption>
-</figure>
-
-<h2 id="what-is-soylent">What is Soylent?</h2>
-<p><a href="http://soylent.me">Soylent</a> is some sort of wicked Brave New World-esque food created by Robert Rhinehart and his team after recognizing the disproportionate amount of time and money they spent creating nutritionally complete meals.</p>
-
-<p>Soylent is a food product (classified as a food, not a supplement, by the FDA) designed for use as a staple meal by all adults. Each serving of Soylent provides maximum nutrition with minimum effort.</p>
-
-<h2 id="so-why-would-i-drink-it">So Why Would I Drink It?</h2>
-<p>The main benefit that I saw when researching Soylent was the cost. I would be able to have a whole days worth of food for $3.50 per day. Not only would it be insanely cheap and sustainable, I would be achieving my exact nutritional requirements. </p>
-
-<h2 id="cost-ingredients">Cost? Ingredients?</h2>
-<p>I used Soylent’s <a href="http://diy.soylent.me">DIY Tool</a> to select the community favorite recipe called <a href="http://diy.soylent.me/recipes/people-chow-301-tortilla-perfection">People’s Chow</a>. With only 8 ingredients (plus water) this seemed like a low-overhead and low-risk entry point into my Soylent experiment. I spent $223 for ~2-3 months worth of food, leaving me with an approximate cost of $3.50/day. The only thing I replaced from the <a href="http://diy.soylent.me/recipes/people-chow-301-tortilla-perfection">People’s Chow Recipe</a> was to substitute Olive Oil for the Soybean Oil. </p>
-
-<figure>
-	<img src="/images/soylent/nutrition.png" />
-	<figcaption>People's Chow Nutrition Information</figcaption>
-</figure>
-
-<figure>
-	<img src="/images/soylent/soylent_ingredients.jpeg" />
-	<figcaption>All ingredients of Soylent before being mixed</figcaption>
-</figure>
-
-<h2 id="mixing-process">Mixing Process</h2>
-<p>The first time I made the DIY Soylent, I completely messed it up. My blender is too small to blend the whole day’s weight of Soylent powder, thus leaving me with an insanely grainy, disgusting, porridge. 
-The second time I made the DIY Soylent, I split the weight of the dry ingredients in half, blending half of a days “food” at a time. The steps I found that work best are as follows: </p>
-
-<ol>
-  <li>Measure Dry Ingredients</li>
-  <li>Shake Dry Ingredients and add to blender</li>
-  <li>Measure out oil and add to blender</li>
-  <li>Add water to blender </li>
-  <li>Blend on high for 4+ minutes, then blend on slow for 6+ minutes </li>
-  <li>Repeat 1-5 for other half of days “food”</li>
-  <li>Refrigerate Soylent overnight </li>
-</ol>
-
-<p>Using this process I was able to get the best taste out of the DIY Soylent as well as the best consistency of the liquid. </p>
-
-<figure>
-	<img src="/images/soylent/soylent_blend.jpeg" />
-	<figcaption>Blending up a fresh batch of Soylent</figcaption>
-</figure>
-
-<h2 id="but-does-it-taste-good">But does it taste good?</h2>
-<p>The first batch of DIY Soylent I made tasted purely horrible. After I split the batch in half and blended it in segments the texture of the Soylent was nearly water. I added 2 Tbsp of Ground Cinnamon along with 3Tbsp of Splenda to each days “food” as well, which seemed to help take away from the bland taste of the Masa. </p>
-
-<h2 id="first-days-report">First Day’s Report</h2>
-<p>So far it was fairly easy until right before bedtime to go all day without food. The Soylent is actually fairly filling. After drinking half of a “meal”, I actually felt full and satisfied as if I had just eaten a large meal. 
-After fixing the taste of the Soylent, I can honestly see this being a viable solution to save money on nutritious food costs. </p>
 
   </div><!-- /.entry-content -->
 </article><!-- /.hentry -->
