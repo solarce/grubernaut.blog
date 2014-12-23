@@ -10,7 +10,7 @@ share: true
 ---
 
 # Creating some kitchen magic with Puppet
-At my current organization (The lovely folks at [Minted](http://www.minted.com)), we use Puppet for configuration management. At first I was fairly skeptical of using Puppet, having learned Chef in a past life, but I have given it my all. The main thing that has bugged me, however, about learning and using Puppet is the lack of a prescribed testing framework. There are other tools that are still maturing every day and actually work quite well for their designed purpose. [Beaker](https://github.com/puppetlabs/beaker) is one such tool that works fairly well for it's designed purpose. The only hangup that our organization had with Beaker is the dependency of a Puppet Master. We currently run a masterless Puppet, using Git and Fabric to schedule and kickoff Puppet runs on individual nodes. We needed a localized testing framework to test our Puppet manifests and modules without changing our whole internal infrastructure.
+At my current organization (The lovely folks at [Minted](http://www.minted.com)), we use [Puppet](http://puppetlabs.com/puppet/what-is-puppet) for configuration management. At first I was unsure of how to get up to speed on using Puppet, having gotten used [Chef](http://chef.io) and it's development ecosystem in a past life, but I decided to give it my all. The main thing that has bugged me, about learning and using Puppet is the lack of a prescribed testing framework. There are tools that are still maturing every day and actually work quite well for their designed purpose. [Beaker](https://github.com/puppetlabs/beaker) is one such tool that works fairly well, but Beaker has a dependency on a Puppet Master. We currently run a masterless Puppet, using Git and Fabric, to schedule and orchestrate Puppet runs on individual nodes. We needed a localized testing framework to test our Puppet manifests and modules without changing our whole internal infrastructure and I set out to find one.
 
 Some of the key requirements that we held for a testing framework were:
 
@@ -20,16 +20,18 @@ Some of the key requirements that we held for a testing framework were:
 4. Cheap
 5. Fast
 
-## Let's begin cooking
-Enter [Test-Kitchen](https://github.com/test-kitchen/test-kitchen). Test Kitchen provides us with the framework to test all of our puppet modules, in one run, in parallel, while using a busser for our existing testing framework.
-"But Wait!", you say. "Test Kitchen is for Chef!". This is where [Kitchen-Puppet](https://github.com/neillturner/kitchen-puppet) comes in. Kitchen Puppet is a provisioner driver for test-kitchen. This is the same as Chef-Solo and Chef-Zero. Since our organization uses masterless puppet, this fits into our infrastructure with grace. Kitchen-Puppet allows us to use Test-Kitchen's existing testing framework, and provision our test subject with a "puppet apply" command. Be sure to read the full set of [Provisioner Options](https://github.com/neillturner/kitchen-puppet/blob/master/provisioner_options.md) for Kitchen-Puppet as well. Not only can you set provisioner options in the provisioner config block in the test-kitchen yaml config, but you can set provisioner options per test suite. We use this functionality at Minted to test different roles based on custom Facter Facts passed to the test suites.
+## Let's get cooking
+Enter [Test-Kitchen](https://github.com/test-kitchen/test-kitchen). `test-kitchen` provides us with the framework to test all of our puppet modules, in one run, in parallel, while using a busser for our existing testing framework.
 
-Enter [Kitchen-Docker](https://github.com/portertech/kitchen-docker). Kitchen Docker allows us to have exceedingly fast tests ran against multiple test suites at the same time. Plus it's Docker, so you know it's cool. If you're running on an inferior Operating System such as OSX, you'll need to install and become familiar with [Boot2Docker](http://boot2docker.io/) before moving any further. Our Kitchen setup takes advantage of Boot2Docker by using the "DOCKER_HOST" environment variable. Depending on how many suites you want to run and how many you want to test in a convurrent mannor, it may no longer be wise to run all of your containers locally, whether through Boot2Docker or natively. Using the environment variable "DOCKER_HOST", it is even possible to spin up a remote EC2 instance to host all of your testing containers. This situation would be extremely beneficial for automated testing from Jenkins, TravisCI, and others.
+"But Wait!", you say. "`test-kitchen` is for Chef!". This is where [kitchen-puppet](https://github.com/neillturner/kitchen-puppet) comes in. `kitchen-puppet` is a provisioner driver for test-kitchen. It uses the same interfaces that Chef-Solo and Chef-Zero tap into. Since our organization uses masterless puppet, this fits into our infrastructure with grace. `kitchen-puppet` allows us to use `test-kitchen`'s existing testing framework, and provision our test subject with a `puppet apply` command. Be sure to read the full set of [Provisioner Options](https://github.com/neillturner/kitchen-puppet/blob/master/provisioner_options.md) for `kitchen-puppet` as well. Not only can you set provisioner options in the provisioner config block in the test-kitchen yaml config, but you can set provisioner options per test suite. We use this functionality at Minted to test different roles based on custom [Facter Facts](https://docs.puppetlabs.com/facter/latest/core_facts.html) passed to the test suites.
 
-### Our Setup
+## Cooking with containers
+Enter [kitchen-docker](https://github.com/portertech/kitchen-docker). `kitchen-docker` allows us to have exceedingly fast tests ran against multiple test suites at the same time. Plus it's [Docker](http://docker.io), so you know it's cool. If you're running on an inferior Operating System such as OSX, you'll need to install and become familiar with [boot2docker](http://boot2docker.io/) before moving any further. Our Kitchen setup takes advantage of _boot2docker_ by using the `DOCKER_HOST` environment variable. Depending on how many suites you want to run and how many you want to test in a convurrent mannor, it may no longer be wise to run all of your containers locally, whether through _boot2docker_ or natively. Using the environment variable `DOCKER_HOST`, it is even possible to spin up a remote EC2 instance to host all of your testing containers. This situation would be extremely beneficial for automated testing from Jenkins, TravisCI, and others.
 
-I have created a github repo for this post as well. Simply clone the repo, and test to your liking. :)
-[grubernaut-kitchen-example](https://github.com/grubernaut/kitchen-example)
+## Our Setup
+
+I have created a github repo, [grubernaut-kitchen-example](https://github.com/grubernaut/kitchen-example),for this post as well. Simply clone the repo, and test to your liking. :)
+
 {% highlight bash linenos %}
 {% raw %}
 .
@@ -47,7 +49,7 @@ I have created a github repo for this post as well. Simply clone the repo, and t
 {% endraw %}
 {% endhighlight %}
 
-### Mise-en-place
+## Mise-en-place
 
 *Getting things setup*
 
@@ -98,8 +100,9 @@ suites:
 {% endraw %}
 {% endhighlight %}
 
-One very important peice of the puzzle is the platform configuration. Here we are setting all of the settings necessary for kitchen and and kitchen-docker driver to talk to each other. Remember, if you are running Linux natively, you shouldn't have to set a DOCKER_HOST environment variable. Unless, of course, you wish to run docker on a remote host. When running on OSX, you should already have the DOCKER_HOST environment variable set as a result of installing Boot2Docker.
-We can, by all means, add custom provisioning steps to the base docker image, but I like to separate these steps out into a Dockerfile. There are, however, excellent base images for Ubuntu 14.04, see [Phusion's Base Docker Image](https://github.com/phusion/baseimage-docker); but I wanted to highlight the kitchen-docker feature of including your own custom Dockerfile inside of test-kitchen. This will allow you to customize the docker images for your organization beyond the scope of a base image. And that is what I am doing here with this Dockerfile
+One very important peice of the puzzle is the platform configuration. Here we are setting all of the settings necessary for `kitchen` and and `kitchen-docker` driver to talk to each other. Remember, if you are running [Linux](http://archlinux.org) natively, you shouldn't have to set a `DOCKER_HOST` environment variable. Unless, of course, you wish to run docker on a remote host. When running on OSX, you should already have the `DOCKER_HOST` environment variable set as a result of installing _boot2docker_.
+
+We can, by all means, add custom provisioning steps to the base docker image, but I like to separate these steps out into a Dockerfile. There are, however, excellent base images for Ubuntu 14.04, see [Phusion's baseimage-docker project](https://github.com/phusion/baseimage-docker); but I wanted to highlight the `kitchen-docker` feature of including your own custom [Dockerfile](https://docs.docker.com/reference/builder/) inside of `test-kitchen`. This will allow you to customize the docker images for your organization beyond the scope of a base image. And that is what I am doing here with this Dockerfile
 
 **ubuntu12.04-dockerfile:**
 {% highlight bash linenos %}
@@ -144,7 +147,7 @@ shell => '/bin/bash',
 {% endraw %}
 {% endhighlight %}
 
-We also need to write a serverspec test for the manifest above. Again, keeping with our simple theme, we should test all of the resources that we have defined in our manifest. Notice the file path for the serverspec test. This is required by the test-kitchen busser, which we will talk about later.
+We also need to write a [serverspec](http://serverspec.org/) test for the manifest above. Again, keeping with our [KISS](http://en.wikipedia.org/wiki/KISS_principle) theme, we should test all of the resources that we have defined in our manifest. Notice the file path for the serverspec test. This is required by the `test-kitchen` busser, which we will talk about later.
 
 **test/integration/webserver/serverspec/default_spec.rb:**
 
@@ -176,7 +179,7 @@ We need gems installed,of course, to be able to test our infrastructure that we 
 % bundle install
 {% endhighlight %}
 
-Once all of our gems are installed, we should be able to run test-kitchen and see our instance suite waiting to be converged:
+Once all of our gems are installed, we should be able to run `test-kitchen` and see our instance suite waiting to be converged:
 
 {% highlight bash %}
 % kitchen list
@@ -184,7 +187,7 @@ Instance              Driver  Provisioner  Last Action
 webserver-ubuntu      Docker  PuppetApply  Created
 {% endhighlight %}
 
-If everything went smoothly, we should be able to now Create, Converge, and Test our "webserver" instance. Notice how test-kitchen actually installs chef during the output of the following command:
+If everything went smoothly, we should be able to now Create, Converge, and Test our "webserver" instance. Notice how `test-kitchen` actually installs chef during the output of the following command:
 
 {% highlight bash %}
 {% raw %}
@@ -201,7 +204,7 @@ Transfering files to <webserver-ubuntu>
 {% endraw %}
 {% endhighlight %}
 
-We actually want Test-Kitchen to behave in this fashion. This allows us to use chef-busser for all of our tests. Which is the real point of this whole project! Now we can run "kitchen test" and test-kitchen will create our docker instance, provision the instance with puppet, test the instance with serverspec, and then destroy our instance. All in one command:
+We actually want `test-kitchen` to behave in this fashion. This allows us to use [chef-busser](https://github.com/test-kitchen/busser) for all of our tests. Which is the real point of this whole project! Now we can run `kitchen test` and `test-kitchen` will create our docker instance, provision the instance with puppet, test the instance with serverspec, and then destroy our instance. All in one command:
 
 {% highlight bash %}
 {% raw %}
@@ -250,6 +253,6 @@ Finished verifying <webserver-ubuntu> (0m7.45s).
 {% endraw %}
 {% endhighlight %}
 
-You can also run "kitchen verify" to test an already running instance without destroying the instance.
+You can also run `kitchen verify` to test an already running instance without destroying the instance.
 
-Hopefully this helps you setup and start testing your puppet infrastructure using Test-Kitchen, Puppet, and Docker!
+Hopefully this helps you setup and start testing your puppet infrastructure using `test-kitchen`, Puppet, and Docker!
